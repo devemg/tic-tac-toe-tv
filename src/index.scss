@@ -55,10 +55,15 @@ body {
 
     img {
       width: 6vw;
+      visibility: hidden;
     }
 
     &.active {
       opacity: 1;
+
+      img {
+        visibility: visible;
+      }
     }
   }
 

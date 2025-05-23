@@ -1,9 +1,10 @@
 import React from "react";
 import iconx from '../../assets/icon-x.svg';
 import icono from '../../assets/icon-o.svg';
+import { PlayerGame } from "../models/player-gamer";
 
 interface PlayerProps {
-    active: string;
+    active: PlayerGame;
 }
 
 export const Players: React.FC<PlayerProps> = ({ active }) => {
