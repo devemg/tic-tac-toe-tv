@@ -32,7 +32,7 @@ export const Board: React.FC<BoardProps> = ({ activePlayer, togglePlayer }) => {
                 board.map((b, xIndex) => <div key={xIndex} className="board-row">
                     {
                         b.map((cell, yIndex) => <button key={`${xIndex}-${yIndex}`}
-                            className={`cell ${cell >= 0 ? 'marked' : ''}`}
+                            className={`cell ${cell >= 0 ? 'marked' : ''} ${activePlayer}`}
                             onClick={() => markBoardCell(xIndex, yIndex)}>
                             {cell === 0 ? <img src={icono} /> : cell === 1 ? <img src={iconx} /> : ''}
                         </button>)

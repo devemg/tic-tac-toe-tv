@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Players } from "./Players";
+import { Players } from "../components/Players";
 import { PlayerGame } from "../models/player-gamer";
-import { Board } from "./Board";
+import { Board } from "../components/Board";
 
 export const Game = () => {
     const [activePlayer, setActivePlayer] = useState<PlayerGame>('p1');
