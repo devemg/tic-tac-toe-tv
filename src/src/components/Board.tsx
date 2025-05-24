@@ -3,49 +3,32 @@ import iconx from '../../assets/icon-x.svg';
 import icono from '../../assets/icon-o.svg';
 import { PlayerGame } from "../models/player-gamer";
 import { useEffect, useState } from "react";
+import { checkBoardFilled, checkWinner } from '../utils/utils';
+import { WinnerMovement } from '../models/winner-movement';
 
 interface BoardProps {
     activePlayer: PlayerGame;
-    winner: null | PlayerGame;
+    winner: undefined | null | PlayerGame;
     togglePlayer: () => void;
-    manageWinner: (winner: PlayerGame) => void;
+    manageWinner: (winner: PlayerGame | null) => void;
 }
-
-export const checkWinner = (board: number[][], playerName: PlayerGame): boolean => {
-    const player = playerName === 'p1' ? 0 : 1;
-    // // Check rows
-    for (let i = 0; i < 3; i++) {
-        if (board[i][0] === player && board[i][1] === player && board[i][2] === player) {
-            return true;
-        }
-    }
-    // Check columns
-    for (let j = 0; j < 3; j++) {
-        if (board[0][j] === player && board[1][j] === player && board[2][j] === player) {
-            return true;
-        }
-    }
-    // // Check diagonals
-    if (board[0][0] === player && board[1][1] === player && board[2][2] === player) {
-        return true;
-    }
-    if (board[0][2] === player && board[1][1] === player && board[2][0] === player) {
-        return true;
-    }
-    // No win
-    return false;
-}
-
 
 export const Board: React.FC<BoardProps> = ({ activePlayer, winner, togglePlayer, manageWinner }) => {
     const [board, setBoard] = useState<number[][]>([[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]]);
     const [started, setStarted] = useState(false);
+    const [winnerui, setWinnerui] = useState<{movement: WinnerMovement; value: number}>();
 
     useEffect(() => {
         if (started) {
-            const ganador = checkWinner(board, activePlayer);
-            if (ganador) {
+            const winner = checkWinner(board, activePlayer);
+            if (winner) {
+                setWinnerui(winner);
+                setTimeout(() => {
                 manageWinner(activePlayer);
+                }, 2000);
+            }
+            else if (checkBoardFilled(board)) {
+                manageWinner(null);
             }
             else {
                 togglePlayer();
@@ -54,9 +37,10 @@ export const Board: React.FC<BoardProps> = ({ activePlayer, winner, togglePlayer
     }, [board]);
 
     useEffect(() => {
-        if (started && winner == null) {
+        if (started && winner == undefined && winner !== null) {
             setBoard([[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]]);
-            setStarted(false)
+            setStarted(false);
+            setWinnerui(undefined);
         }
     }, [winner]);
 
@@ -76,8 +60,15 @@ export const Board: React.FC<BoardProps> = ({ activePlayer, winner, togglePlayer
 
     return (
         <div className="board">
+            { winnerui && winnerui.movement === 'column' && winnerui.value === 0 && <span className={`board-column-line line-1 ${activePlayer}`}></span>}
+            { winnerui && winnerui.movement === 'column' && winnerui.value === 1 && <span className={`board-column-line line-2 ${activePlayer}`}></span>}
+            { winnerui && winnerui.movement === 'column' && winnerui.value === 2 && <span className={`board-column-line line-3 ${activePlayer}`}></span>}
+
+            { winnerui && winnerui.movement === 'diagonal' && winnerui.value === 1 && <span className={`board-column-line diagonal-1 ${activePlayer}`}></span>}
+            { winnerui && winnerui.movement === 'diagonal' && winnerui.value === 2 && <span className={`board-column-line diagonal-2 ${activePlayer}`}></span>}
             {
                 board.map((b, xIndex) => <div key={xIndex} className="board-row">
+                    { winnerui && winnerui.movement === 'row' && winnerui.value == xIndex && <span className={`board-row-line ${activePlayer}`}></span>}
                     {
                         b.map((cell, yIndex) => <button key={`${xIndex}-${yIndex}`}
                             className={`cell ${cell >= 0 ? 'marked' : ''} ${activePlayer}`}
@@ -87,5 +78,6 @@ export const Board: React.FC<BoardProps> = ({ activePlayer, winner, togglePlayer
                     }
                 </div>)
             }
+            
         </div>)
 }
