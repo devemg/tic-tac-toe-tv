@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Players } from "../components/Players";
 import { PlayerGame } from "../models/player-gamer";
 import { Board } from "../components/Board";
+import { useNavigate } from "react-router";
 
 export const Game = () => {
     const [activePlayer, setActivePlayer] = useState<PlayerGame>('p1');
     const [winner, setWinner] = useState<PlayerGame | undefined | null>();
+    const navigate = useNavigate();
 
     const toglePlayer = () => {
         setActivePlayer(prevPlayer => prevPlayer === 'p1' ? 'p2' : 'p1');
@@ -30,7 +32,7 @@ export const Game = () => {
                 {winner && <p>Winner: {activePlayer === 'p1' ? 'Player 1' : 'Player 2'}</p>}
                 {winner && <p>Congratulations!! </p>}
                 <div className="buttons">
-                    <button className="btn">Go Back</button>
+                    <button className="btn" onClick={()=>navigate('/')}>Go Back</button>
                     <button className="btn" onClick={playAgain}>Play Again</button>
                 </div>
             </div>}
