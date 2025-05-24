@@ -12,11 +12,11 @@ export const Players: React.FC<PlayerProps> = ({ active }) => {
     <div className="players">
         <div className={`player ${active === 'p1' ? 'active' : ''}`}>
           <p className="p1">Player 1</p>
-          <img src={iconx} alt="X" />
+          <img src={icono} alt="O" />
         </div>
         <div className={`player ${active === 'p2' ? 'active' : ''}`}>
           <p className="p2">Player 2</p>
-          <img src={icono} alt="O" />
+          <img src={iconx} alt="X" />
         </div>
     </div>
   )
