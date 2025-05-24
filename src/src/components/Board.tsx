@@ -57,7 +57,7 @@ export const Board: React.FC<BoardProps> = ({ activePlayer, winner, togglePlayer
     }
 
     return (
-        <div className="board">
+        <div className="board" navi-container="bidirectional">
             { winnerui && winnerui.movement === 'column' && winnerui.value === 0 && <span className={`board-column-line line-1 ${activePlayer}`}></span>}
             { winnerui && winnerui.movement === 'column' && winnerui.value === 1 && <span className={`board-column-line line-2 ${activePlayer}`}></span>}
             { winnerui && winnerui.movement === 'column' && winnerui.value === 2 && <span className={`board-column-line line-3 ${activePlayer}`}></span>}
@@ -69,6 +69,7 @@ export const Board: React.FC<BoardProps> = ({ activePlayer, winner, togglePlayer
                     { winnerui && winnerui.movement === 'row' && winnerui.value == xIndex && <span className={`board-row-line ${activePlayer}`}></span>}
                     {
                         b.map((cell, yIndex) => <button key={`${xIndex}-${yIndex}`}
+                            navi-element="true"
                             className={`cell ${cell >= 0 ? 'marked' : ''} ${activePlayer}`}
                             onClick={() => markBoardCell(xIndex, yIndex)}>
                             {cell === 0 ? <img src={icono} /> : cell === 1 ? <img src={iconx} /> : ''}
