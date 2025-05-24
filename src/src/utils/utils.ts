@@ -1,4 +1,4 @@
-import { PlayerGame } from "../models/player-gamer";
+import { GamePlayerType } from "../models/game-player-type";
 import { WinnerMovement } from "../models/winner-movement";
 
 /**
@@ -10,7 +10,7 @@ import { WinnerMovement } from "../models/winner-movement";
  * The winner movement can be a row, a column or a diagonal
  */
 
-export const checkWinner = (board: number[][], playerName: PlayerGame): { movement: WinnerMovement, value: number } | null => {
+export const checkWinner = (board: number[][], playerName: GamePlayerType): { movement: WinnerMovement, value: number } | null => {
     const player = playerName === 'p1' ? 0 : 1;
     // // Check rows
     for (let i = 0; i < 3; i++) {

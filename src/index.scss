@@ -78,16 +78,15 @@ body {
       img {
         visibility: visible;
       }
-    }
-  }
 
-
-  .p1 {
+      .p1 {
     color: #379777;
   }
 
   .p2 {
     color: #F4CE14;
+  }
+    }
   }
 
 }
@@ -225,11 +224,11 @@ body {
       padding: 0.5vw 1vw;
       background-color: #595B5E;
 
-      &[name="player1"] {
+      &[name="p1"] {
         margin-right: 4vw;
       }
 
-      &[name="player2"] {
+      &[name="p2"] {
         margin-left: 4vw;
       }
     }

@@ -1,16 +1,16 @@
 
 import iconx from '../../assets/icon-x.svg';
 import icono from '../../assets/icon-o.svg';
-import { PlayerGame } from "../models/player-gamer";
+import { GamePlayerType } from "../models/game-player-type";
 import { useEffect, useState } from "react";
 import { checkBoardFilled, checkWinner } from '../utils/utils';
 import { WinnerMovement } from '../models/winner-movement';
 
 interface BoardProps {
-    activePlayer: PlayerGame;
-    winner: undefined | null | PlayerGame;
+    activePlayer: GamePlayerType;
+    winner: undefined | null | GamePlayerType;
     togglePlayer: () => void;
-    manageWinner: (winner: PlayerGame | null) => void;
+    manageWinner: (winner: GamePlayerType | null) => void;
 }
 
 export const Board: React.FC<BoardProps> = ({ activePlayer, winner, togglePlayer, manageWinner }) => {
@@ -23,9 +23,7 @@ export const Board: React.FC<BoardProps> = ({ activePlayer, winner, togglePlayer
             const winner = checkWinner(board, activePlayer);
             if (winner) {
                 setWinnerui(winner);
-                setTimeout(() => {
                 manageWinner(activePlayer);
-                }, 2000);
             }
             else if (checkBoardFilled(board)) {
                 manageWinner(null);
