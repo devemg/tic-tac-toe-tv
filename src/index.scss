@@ -14,10 +14,12 @@
 }
 
 body {
+  margin: 0;
   padding: 2vw;
+  width: 100%;
+  height: 100vh;
   box-sizing: border-box;
 }
-
 
 .btn {
   font-size: 2vw;
@@ -86,12 +88,12 @@ body {
       }
 
       .p1 {
-    color: #379777;
-  }
+        color: #379777;
+      }
 
-  .p2 {
-    color: #F4CE14;
-  }
+      .p2 {
+        color: #F4CE14;
+      }
     }
   }
 
@@ -167,13 +169,19 @@ body {
   }
 
   .cell {
-    width: 12vw;
-    height: 12vw;
+    width: 9vw;
+    height: 9vw;
     border: none;
     background: #595B5E;
     margin-right: 0.5vw;
     cursor: pointer;
     outline: none;
+
+
+    @media (min-width: 1900px) {
+      width: 12vw;
+      height: 12vw;
+    }
 
     &.p1:hover,
     &.p1:focus {
@@ -205,14 +213,13 @@ body {
 }
 
 .profiles {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  width: 100%;
+  height: 80vh;
 
   &-logo {
     width: 5vw;
