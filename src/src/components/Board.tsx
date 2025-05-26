@@ -9,11 +9,12 @@ import { WinnerMovement } from '../models/winner-movement';
 interface BoardProps {
     activePlayer: GamePlayerType;
     winner: undefined | null | GamePlayerType;
+    ref: React.RefObject<HTMLDivElement | null>;
     togglePlayer: () => void;
     manageWinner: (winner: GamePlayerType | null) => void;
 }
 
-export const Board: React.FC<BoardProps> = ({ activePlayer, winner, togglePlayer, manageWinner }) => {
+export const Board: React.FC<BoardProps> = ({ activePlayer, winner, ref, togglePlayer, manageWinner }) => {
     const [board, setBoard] = useState<number[][]>([[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]]);
     const [started, setStarted] = useState(false);
     const [winnerui, setWinnerui] = useState<{movement: WinnerMovement; value: number}>();
@@ -57,7 +58,7 @@ export const Board: React.FC<BoardProps> = ({ activePlayer, winner, togglePlayer
     }
 
     return (
-        <div className="board" navi-container="bidirectional">
+        <div ref={ref} className="board" navi-container="bidirectional">
             { winnerui && winnerui.movement === 'column' && winnerui.value === 0 && <span className={`board-column-line line-1 ${activePlayer}`}></span>}
             { winnerui && winnerui.movement === 'column' && winnerui.value === 1 && <span className={`board-column-line line-2 ${activePlayer}`}></span>}
             { winnerui && winnerui.movement === 'column' && winnerui.value === 2 && <span className={`board-column-line line-3 ${activePlayer}`}></span>}
