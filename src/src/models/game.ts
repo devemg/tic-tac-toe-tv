@@ -1,3 +1,4 @@
+import { BackManager } from "../context/back-manager";
 
 export interface GamePlayerNames {
         p1: string;
@@ -7,4 +8,5 @@ export interface GamePlayerNames {
 export interface GameContext {
     names: GamePlayerNames;
     setNames: (names: GamePlayerNames) => void;
+    backManager: BackManager;
 }

@@ -12,7 +12,6 @@ export const Profiles = () => {
   useEffect(() => {
     focusContainerRef(buttonsRef);
   }, []);
-  
 
    const handleChange = (event: ChangeEvent) => {
     const target = event.target as HTMLInputElement;
