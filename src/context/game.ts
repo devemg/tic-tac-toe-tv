@@ -1,4 +1,4 @@
-import { BackManager } from "../context/back-manager";
+import { BackManager } from "./back-manager";
 
 export interface GamePlayerNames {
         p1: string;

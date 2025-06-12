@@ -25,16 +25,13 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      '@pages': '/src/pages',
       '@components': '/src/components',
       '@models': '/src/models',
-      '@assets': '/src/assets',
-      '@pages': '/src/pages',
-      '@services': '/src/services',
-      '@router': '/src/router',
+      '@context': '/src/context',
       '@utils': '/src/utils',
-      '@data': '/src/data',
-      '@store': '/src/store',
       '@hooks': '/src/hooks',
+      '@assets': '/src/assets',
     },
   },
 })

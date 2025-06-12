@@ -1,8 +1,9 @@
 import React from "react";
-import iconx from '../../assets/icon-x.svg';
-import icono from '../../assets/icon-o.svg';
-import { GamePlayerType } from "../models/game-player-type";
-import { useGame } from "../context/GameContext";
+import iconx from '@assets/icon-x.svg';
+import icono from '@assets/icon-o.svg';
+import { GamePlayerType } from "@models/game-player-type";
+import { useGame } from "@context";
+import styles from './players.module.scss';
 
 interface PlayerProps {
     active: GamePlayerType;

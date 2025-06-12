@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { Players } from "../components/Players";
-import { GamePlayerType } from "../models/game-player-type";
-import { Board } from "../components/Board";
+import { Players, Board, Dialog } from "@components";
+import { GamePlayerType } from "@models/game-player-type";
 import { useNavigate } from "react-router";
-import { focusContainerRef } from "../utils/focus.utils";
-import { Dialog } from "../components/Dialog";
-import { useGame } from "../context/GameContext";
+import { focusContainerRef } from "@utils/focus.utils";
+import { useGame } from "@context";
 
-export const Game = () => {
+export const GamePage = () => {
     const [activePlayer, setActivePlayer] = useState<GamePlayerType>('p1');
     const [winner, setWinner] = useState<GamePlayerType | undefined | null>();
     const [showExitDialog, setshowExitDialog] = useState(false);

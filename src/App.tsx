@@ -1,8 +1,8 @@
 import { Outlet, useNavigate } from 'react-router'
-import { Splash } from './components/Splash'
-import { GameContextProvider, useGame } from './context/GameContext'
 import { manageMovement, NaviKeyboardEvent } from "@devemg/navi-lib";
 import { useEffect } from 'react';
+import { GameContextProvider, useGame } from '@context';
+import { Splash } from '@components';
 
 
 export const App = () => {

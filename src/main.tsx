@@ -2,12 +2,8 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.scss'
 import { HashRouter, Route, Routes } from 'react-router'
-import { Profiles } from './src/pages/Profiles'
-import { Game } from './src/pages/Game'
-import { App } from './src/App'
-import HomePage from './src/pages/Home'
-import { LeaderBoard } from './src/pages/LeaderBoard'
-
+import { App } from './App'
+import { GamePage, HomePage, LeaderBoard, PlayerNameSelector } from '@pages';
 
 
 createRoot(document.getElementById('root')!).render(
@@ -16,9 +12,9 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route element={<App />}>
           <Route index element={<HomePage />} />
-          <Route path="/profiles" element={<Profiles />} />
+          <Route path="/profiles" element={<PlayerNameSelector />} />
           <Route path="/board" element={<LeaderBoard />} />
-          <Route path="/game" element={<Game />} />
+          <Route path="/game" element={<GamePage />} />
         </Route>
       </Routes>
     </HashRouter>

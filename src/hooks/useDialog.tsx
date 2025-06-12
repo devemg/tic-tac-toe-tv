@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import { focusContainerRef } from "../utils/focus.utils";
+import { focusContainerRef } from "@utils/focus.utils";
 
 export const useDialog = () => {
   const [isDialogOpen, setDialogOpen] = useState<boolean | null>(null);

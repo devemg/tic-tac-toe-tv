@@ -1,5 +1,5 @@
-import { GamePlayerType } from "../models/game-player-type";
-import { WinnerMovement } from "../models/winner-movement";
+import { GamePlayerType } from "@models/game-player-type";
+import { WinnerMovement } from "@models/winner-movement";
 
 /**
  * Check board for winner conditions

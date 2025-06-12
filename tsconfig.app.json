@@ -25,16 +25,13 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl" : "./src",
     "paths": {
-      "@components/*": ["./components/*"],
+      "@pages": ["./pages"],
+      "@components": ["./components"],
       "@models/*": ["./models/*"],
-      "@assets/*": ["./assets/*"],
-      "@pages/*": ["./pages/*"],
-      "@services/*": ["./services/*"],
-      "@router/*": ["./router/*"],
+      "@context": ["./context"],
       "@utils/*": ["./utils/*"],
-      "@data/*": ["./data/*"],
-      "@store/*": ["./store/*"],
       "@hooks/*": ["./hooks/*"],
+      "@assets/*": ["./assets/*"],
     }
   },
   "include": ["src"]

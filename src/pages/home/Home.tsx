@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router"
 
-export default function HomePage() {
+export const HomePage = () =>  {
   const navigate = useNavigate();
   return (
     <div>

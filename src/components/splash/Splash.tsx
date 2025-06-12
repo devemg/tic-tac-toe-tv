@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react"
+import styles from './splash.module.scss';
 
 export const Splash = () => {
   const splashRef = useRef<HTMLDivElement>(null);

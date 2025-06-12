@@ -1,10 +1,11 @@
 
-import iconx from '../../assets/icon-x.svg';
-import icono from '../../assets/icon-o.svg';
-import { GamePlayerType } from "../models/game-player-type";
 import { useEffect, useState } from "react";
-import { checkBoardFilled, checkWinner } from '../utils/utils';
-import { WinnerMovement } from '../models/winner-movement';
+import iconx from '@assets/icon-x.svg';
+import icono from '@assets/icon-o.svg';
+import { GamePlayerType } from "@models/game-player-type";
+import { checkBoardFilled, checkWinner } from '@utils/game.utils';
+import { WinnerMovement } from '@models/winner-movement';
+import styles from './board.module.scss';
 
 interface BoardProps {
     activePlayer: GamePlayerType;
@@ -17,7 +18,7 @@ interface BoardProps {
 export const Board: React.FC<BoardProps> = ({ activePlayer, winner, ref, togglePlayer, manageWinner }) => {
     const [board, setBoard] = useState<number[][]>([[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]]);
     const [started, setStarted] = useState(false);
-    const [winnerui, setWinnerui] = useState<{movement: WinnerMovement; value: number}>();
+    const [winnerui, setWinnerui] = useState<{ movement: WinnerMovement; value: number }>();
 
     useEffect(() => {
         if (started) {
@@ -59,15 +60,15 @@ export const Board: React.FC<BoardProps> = ({ activePlayer, winner, ref, toggleP
 
     return (
         <div ref={ref} className="board" navi-container="bidirectional">
-            { winnerui && winnerui.movement === 'column' && winnerui.value === 0 && <span className={`board-column-line line-1 ${activePlayer}`}></span>}
-            { winnerui && winnerui.movement === 'column' && winnerui.value === 1 && <span className={`board-column-line line-2 ${activePlayer}`}></span>}
-            { winnerui && winnerui.movement === 'column' && winnerui.value === 2 && <span className={`board-column-line line-3 ${activePlayer}`}></span>}
+            {winnerui && winnerui.movement === 'column' && winnerui.value === 0 && <span className={`board-column-line line-1 ${activePlayer}`}></span>}
+            {winnerui && winnerui.movement === 'column' && winnerui.value === 1 && <span className={`board-column-line line-2 ${activePlayer}`}></span>}
+            {winnerui && winnerui.movement === 'column' && winnerui.value === 2 && <span className={`board-column-line line-3 ${activePlayer}`}></span>}
 
-            { winnerui && winnerui.movement === 'diagonal' && winnerui.value === 1 && <span className={`board-column-line diagonal-1 ${activePlayer}`}></span>}
-            { winnerui && winnerui.movement === 'diagonal' && winnerui.value === 2 && <span className={`board-column-line diagonal-2 ${activePlayer}`}></span>}
+            {winnerui && winnerui.movement === 'diagonal' && winnerui.value === 1 && <span className={`board-column-line diagonal-1 ${activePlayer}`}></span>}
+            {winnerui && winnerui.movement === 'diagonal' && winnerui.value === 2 && <span className={`board-column-line diagonal-2 ${activePlayer}`}></span>}
             {
                 board.map((b, xIndex) => <div key={xIndex} className="board-row">
-                    { winnerui && winnerui.movement === 'row' && winnerui.value == xIndex && <span className={`board-row-line ${activePlayer}`}></span>}
+                    {winnerui && winnerui.movement === 'row' && winnerui.value == xIndex && <span className={`board-row-line ${activePlayer}`}></span>}
                     {
                         b.map((cell, yIndex) => <button key={`${xIndex}-${yIndex}`}
                             navi-element="true"
@@ -78,6 +79,6 @@ export const Board: React.FC<BoardProps> = ({ activePlayer, winner, ref, toggleP
                     }
                 </div>)
             }
-            
+
         </div>)
 }

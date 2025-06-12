@@ -1,9 +1,9 @@
+import { useGame } from "@context";
+import { focusContainerRef } from "@utils/focus.utils";
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router"
-import { useGame } from "../context/GameContext";
-import { focusContainerRef } from "../utils/focus.utils";
 
-export const Profiles = () => {
+export const PlayerNameSelector = () => {
   const navigate = useNavigate();
   const { names, setNames } = useGame();
   const [form, setForm] = useState({p1: names.p1, p2: names.p2});

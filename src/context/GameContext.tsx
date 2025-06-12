@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { GameContext, GamePlayerNames } from "../models/game";
+import { GameContext, GamePlayerNames } from "./game";
 import { BackManager } from "./back-manager";
 
 const backManager = new BackManager();
