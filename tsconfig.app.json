@@ -24,6 +24,18 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "baseUrl" : "./src",
+    "paths": {
+      "@components/*": ["./components/*"],
+      "@models/*": ["./models/*"],
+      "@assets/*": ["./assets/*"],
+      "@pages/*": ["./pages/*"],
+      "@services/*": ["./services/*"],
+      "@router/*": ["./router/*"],
+      "@utils/*": ["./utils/*"],
+      "@data/*": ["./data/*"],
+      "@store/*": ["./store/*"],
+      "@hooks/*": ["./hooks/*"],
+    }
   },
   "include": ["src"]
 }
