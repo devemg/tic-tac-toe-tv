@@ -70,7 +70,7 @@
     width: 9vw;
     height: 9vw;
     border: none;
-    background: #595B5E;
+    background: var(--background-light, #595B5E);
     margin-right: 0.5vw;
     cursor: pointer;
     outline: none;

@@ -1,10 +1,10 @@
 
 import { useEffect, useState } from "react";
-import iconx from '@assets/icon-x.svg';
-import icono from '@assets/icon-o.svg';
 import { GamePlayerType } from "@models/game-player-type";
 import { checkBoardFilled, checkWinner } from '@utils/game.utils';
 import { WinnerMovement } from '@models/winner-movement';
+import iconx from '@assets/icon-x.svg';
+import icono from '@assets/icon-o.svg';
 import styles from './board.module.scss';
 import clsx from 'clsx';
 

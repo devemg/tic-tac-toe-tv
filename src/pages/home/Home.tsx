@@ -2,8 +2,8 @@ import { useNavigate } from "react-router"
 import styles from './home.module.scss';
 import newgame from '@assets/gamepad.svg';
 import board from '@assets/podium-winner.svg';
-// import question from '@assets/question.svg';
-// import gear from '@assets/gear.svg';
+import question from '@assets/question.svg';
+import gear from '@assets/gear.svg';
 
 export const HomePage = () =>  {
   const navigate = useNavigate();
@@ -21,10 +21,10 @@ export const HomePage = () =>  {
           </button>
           <button onClick={()=>navigate('/board')}>
             <img src={board} alt="Winner Podium" />
-            Leaderboard
+            Scoreboard
           </button>
         </div>
-        {/* <div className="page-buttons">
+        <div className="page-buttons">
           <button onClick={()=>navigate('/instructions')}>
             <img src={question} alt="Question" />
             How to play?
@@ -33,7 +33,7 @@ export const HomePage = () =>  {
             <img src={gear} alt="Gear" />
             Settings
           </button>
-        </div> */}
+        </div>
     </div>
   )
 }

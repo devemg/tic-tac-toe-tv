@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import styles from './leader-board.module.scss';
+import styles from './score-board.module.scss';
 import { GameMatch } from '@models/GameMatch';
 import { getTop3 } from '@utils/data.utils';
 import medal1 from '@assets/medals/mdi_medal_gold.svg';
 import medal2 from '@assets/medals/mdi_medal_silver.svg';
 import medal3 from '@assets/medals/mdi_medal_bronze.svg';
 import deleteIcon from '@assets/delete.svg';
+import iconx from '@assets/icon-x.svg';
+import icono from '@assets/icon-o.svg';
 
-export const LeaderBoardPage = () => {
-  const [gameMatches, setGameMatches] = useState<GameMatch[]>([
+export const ScoreBoardPage = () => {
+  const [gameMatches] = useState<GameMatch[]>([
     {
       startTime: new Date(),
       nameP1: 'emely',
@@ -63,12 +65,15 @@ export const LeaderBoardPage = () => {
         <div className={styles['page-matches']}>
           {
             gameMatches.map((match)=><div key={match.startTime.toISOString()}>
-              <div >
+              <div className={styles['match-left']}>
+                <img className={styles[match.winner ?? '']} src={match.winner === 'p1' ? iconx : icono} alt="medal" />
+                <div>
                 <p>{match.nameP1} vs. {match.nameP2}</p>
                 <span>{Date.now() - match.startTime.getTime()} ago</span>
               </div>
+              </div>
               <div>
-                <p>{match.winner === 'p1' ? match.nameP1 : match.nameP2} won!</p>
+                <p className={styles[match.winner ?? '']}>{match.winner === 'p1' ? match.nameP1 : match.nameP2} won!</p>
                 {match.endTime && <span>Duration: {match.endTime.getTime() - match.startTime.getTime()} s</span>}
               </div>
             </div>)

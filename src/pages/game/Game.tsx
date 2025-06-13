@@ -84,8 +84,8 @@ export const GamePage = () => {
             <Dialog show={!!winner || winner === null} onClose={() => { }} >
                 <div className="modal">
                     {winner !== null ? <>
+                        <h1>Congratulations!! </h1>
                         <p>Winner: {activePlayer === 'p1' ? 'Player 1' : 'Player 2'}</p>
-                        <p>Congratulations!! </p>
                     </>
                         : <p>Another game?</p>}
                     <div className="page-buttons" ref={dialogRef} navi-container="horizontal" navi-blocked="true">

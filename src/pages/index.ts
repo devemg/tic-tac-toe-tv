@@ -1,6 +1,6 @@
 export { HomePage } from './home/Home'
 export { GamePage } from './game/Game'
-export { LeaderBoardPage } from './leader-board/LeaderBoard'
+export { ScoreBoardPage } from './score-board/ScoreBoard'
 export { PlayerNamesPage } from './player-names/PlayerNamesPage'
 export { InstructionsPage } from './instructions/Instructions'
 export { SettingsPage } from './settings/Settings'

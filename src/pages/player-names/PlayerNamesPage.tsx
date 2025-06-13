@@ -11,8 +11,8 @@ import { NamesList } from "@components";
 
 export const PlayerNamesPage = () => {
   const navigate = useNavigate();
-  const [player1Options, setPlayer1Options] = useState(['user 1', 'User 2', 'user 3', 'user 4', 'user 5']);
-  const [player2Options, setPlayer2Options] = useState(['Sara', 'Roberto']);
+  const [player1Options] = useState(['user 1', 'User 2', 'user 3', 'user 4', 'user 5']);
+  const [player2Options] = useState(['Sara', 'Roberto']);
   const { names, setNames } = useGame();
   const [form, setForm] = useState({ p1: names.p1, p2: names.p2 });
   const buttonsRef = useRef<HTMLDivElement>(null);
@@ -31,6 +31,7 @@ export const PlayerNamesPage = () => {
 
   const handleSubmit = (ev: FormEvent) => {
     ev.preventDefault();
+    if (form.p1.length === 0 || form.p2.length === 0) return;
     setNames(form);
     localStorage.setItem('pNames', JSON.stringify(form));
     navigate('/game');
@@ -46,7 +47,7 @@ export const PlayerNamesPage = () => {
 
   return (
     <form className={styles['page']} navi-container="vertical" onSubmit={handleSubmit}>
-      <p>Select the game players</p>
+      <h1>Select the game players</h1>
       <div className={styles['page-boxes']} navi-container="horizontal">
         <div>
           <img src={icono} alt="Player 1 Icon" />
@@ -60,7 +61,7 @@ export const PlayerNamesPage = () => {
         </div>
       </div>
       <div className="page-buttons" ref={buttonsRef} navi-container="horizontal">
-        <button type="submit" className="single" navi-element="true">Play</button>
+        <button type="submit" className="single" navi-element="true" disabled={form.p1.length === 0 || form.p2.length === 0}>Play</button>
       </div>
     </form>
   )
