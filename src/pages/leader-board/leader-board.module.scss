@@ -1,0 +1,75 @@
+.page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+
+    p {
+        font-size: 2vw;
+        margin: 0;
+    }
+}
+
+.page-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2vw;
+    opacity: 0.8;
+
+    img {
+        width: 3vw;
+    }
+}
+
+.page-section {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.page-winners {
+    &>p {
+        font-size: 2vw;
+        display: flex;
+
+        img {
+            margin-right: 0.5vw;
+        }
+    }
+}
+
+.page-matches {
+    min-width: 50vw;
+    padding-bottom: 1vw;
+
+    &>div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1vw;
+        border-radius: 8px;
+        background-color: blue;
+        margin-bottom: 0.5vw;
+
+        p {
+            font-size: 1.5vw;
+            text-transform: capitalize;
+        }
+
+        span {
+            text-transform: capitalize;
+            font-size: 1.25vw;
+            opacity: 0.5;
+        }
+    }
+
+}

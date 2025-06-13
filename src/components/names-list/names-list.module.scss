@@ -1,0 +1,16 @@
+
+.name-options {
+    flex: auto;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 30vh;
+
+    p {
+        box-sizing: border-box;
+        font-size: 1.5vw;
+        background-color: red;
+        width: 100%;
+        margin-bottom: 0.5vw;
+        padding: 0.5vw;
+    }
+}
