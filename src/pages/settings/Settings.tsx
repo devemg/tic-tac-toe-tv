@@ -11,8 +11,9 @@ export const SettingsPage = () => {
         </div>
       </div>
       
-        <div className='page-buttons'>
-          <button>About Game</button>
+        <div className={styles['page-footer']}>
+          <p>Tic Tac Toe</p>
+          <p>v.0.0.0</p>
         </div>
     </div>
   )
