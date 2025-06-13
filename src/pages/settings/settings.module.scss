@@ -23,9 +23,10 @@
         display: flex;
         justify-content: space-between;
         box-sizing: border-box;
-        padding: 1vw 2vw;
+        padding: 0.5vw 2vw;
         border-radius: 8px;
         border: 1px solid #FFFFFF;
+        font-size: 1.5vw;
 
         &:focus,
         &:hover {
