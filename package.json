@@ -13,6 +13,7 @@
     "@babel/plugin-transform-runtime": "^7.26.10",
     "@devemg/navi-lib": "^0.5.5",
     "@vitejs/plugin-legacy": "^6.0.2",
+    "clsx": "^2.1.1",
     "core-js": "^3.41.0",
     "date-fns": "^4.1.0",
     "react": "^19.0.0",

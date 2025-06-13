@@ -1,0 +1,57 @@
+.page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    padding: 2vw;
+    box-sizing: border-box;
+    background-color: purple;
+}
+
+.board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.players {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2vw;
+    font-weight: bold;
+
+    &>div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0.5;
+
+        img {
+            width: 6vw;
+            opacity: 0;
+        }
+    }
+
+}
+
+
+.active {
+    opacity: 1 !important;
+
+    img {
+        opacity: 1 !important;
+    }
+
+    &.p1 p {
+        background: #379777;
+    }
+
+    &.p2 p {
+        background: #F4CE14;
+    }
+
+    p {
+        padding: 1vw;
+        border-radius: 8px;
+    }
+}

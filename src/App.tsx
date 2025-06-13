@@ -2,7 +2,6 @@ import { Outlet, useNavigate } from 'react-router'
 import { manageMovement, NaviKeyboardEvent } from "@devemg/navi-lib";
 import { useEffect } from 'react';
 import { GameContextProvider, useGame } from '@context';
-import { Splash } from '@components';
 
 
 export const App = () => {
@@ -27,7 +26,6 @@ export const App = () => {
 
     return (
         <>
-            <Splash />
             <GameContextProvider>
                 <Outlet />
             </GameContextProvider>
