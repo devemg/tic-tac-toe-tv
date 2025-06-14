@@ -1,15 +1,23 @@
 import { useNavigate } from 'react-router';
 import styles from './settings.module.scss';
 import backIcon from '@assets/arrow-left.svg';
+import { useEffect, useRef } from 'react';
+import { focusContainerRef } from '@utils/focus.utils';
 
 export const SettingsPage = () => {
   const navigate = useNavigate();
+  const optionsRef = useRef(null);
+
+  useEffect(() => {
+    focusContainerRef(optionsRef);
+  }, []);
+
   return (
     <div className={styles['page']}>
       <h2 className="page-header">
-        <img src={backIcon} alt="Left Arrow" onClick={()=>navigate('/')} />
+        <img src={backIcon} alt="Left Arrow" onClick={() => navigate('/')} />
       </h2>
-      <div className={styles['page-section']} navi-container="vertical" navi-default="true">
+      <div className={styles['page-section']} navi-container="vertical" navi-default="true" ref={optionsRef}>
         <h1>Settings</h1>
         <div className={styles['page-section-item']} navi-element="true" tabIndex={0}>
           <p>Language</p>
@@ -23,11 +31,11 @@ export const SettingsPage = () => {
           <p>Clear Games History</p>
         </div>
       </div>
-      
-        <div className={styles['page-footer']}>
-          <p>Tic Tac Toe</p>
-          <p>v.0.0.0</p>
-        </div>
+
+      <div className={styles['page-footer']}>
+        <p>Tic Tac Toe</p>
+        <p>v.0.0.0</p>
+      </div>
     </div>
   )
 }

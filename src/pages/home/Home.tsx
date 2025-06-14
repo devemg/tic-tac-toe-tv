@@ -4,9 +4,16 @@ import newgame from '@assets/gamepad.svg';
 import board from '@assets/podium-winner.svg';
 import question from '@assets/question.svg';
 import gear from '@assets/gear.svg';
+import { useEffect, useRef } from "react";
+import { focusContainerRef } from "@utils/focus.utils";
 
 export const HomePage = () =>  {
   const navigate = useNavigate();
+  const boxesRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+      focusContainerRef(boxesRef);
+    }, []);
+
   return (
     <div className={styles['page']} navi-container="vertical">
         <div className={styles['page-logo']}>
@@ -14,7 +21,7 @@ export const HomePage = () =>  {
           <h1>Tic Tac Toe</h1>
         </div>
         <p>Challenge a friend in the classic game of strategy and fun!</p>
-        <div className={styles['page-boxes']} navi-container="horizontal" navi-default="true">
+        <div className={styles['page-boxes']} navi-container="horizontal" navi-default="true" ref={boxesRef}>
           <button onClick={()=>navigate('/profiles')} navi-element="true">
             <img src={newgame} alt="Gamepad" />
             New Game
