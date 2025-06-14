@@ -9,7 +9,7 @@ export const App = () => {
     const { backManager } = useGame();
     const handleKeyup = (e: KeyboardEvent) => {
         const event = e as NaviKeyboardEvent;
-        event.naviBackKeys = ['XF86Back'];//10009 //inject with info to manage in the lib
+        event.naviBackKeys = ['XF86Back', "Insert"];//10009 // insert is for browser dev env
         manageMovement(event);
     }
 
