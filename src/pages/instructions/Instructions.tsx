@@ -5,11 +5,18 @@ import chessIcon from '@assets/chess.svg';
 import gamepadIcon from '@assets/gamepad.svg';
 import tvIcon from '@assets/tv.svg';
 import circleIcon from '@assets/circle.svg';
+import backIcon from '@assets/arrow-left.svg';
+import { useNavigate } from 'react-router';
 
 export const InstructionsPage = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles['page']}>
-      <div className={styles['page-overview']}>
+      <h2 className="page-header">
+        <img src={backIcon} alt="Left Arrow" onClick={() => navigate('/')} />
+      </h2>
+      <div className={styles['page-section']}>
+        <div className={styles['page-overview']}>
           <h2 className={styles['primary-text']}>Game Overview</h2>
           <p>Tic Tac Toe is a classic strategy game played on a 3×3 grid. Two players take turns marking spaces with their symbols (X and O). The first player to get three of their marks in a row wins!</p>
           <div className={styles['page-note']}>
@@ -166,6 +173,7 @@ export const InstructionsPage = () => {
           </div>
         </div>
 
+      </div>
       </div>
     </div>
   )

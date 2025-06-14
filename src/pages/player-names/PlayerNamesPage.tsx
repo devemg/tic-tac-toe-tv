@@ -5,6 +5,7 @@ import { useNavigate } from "react-router"
 import styles from './player-names.module.scss';
 import iconx from '@assets/icon-x.svg';
 import icono from '@assets/icon-o.svg';
+import backIcon from '@assets/arrow-left.svg';
 import { GamePlayerType } from "@models/game-player-type";
 import { NamesList } from "@components";
 import { useGameStore, pushPlayerName } from "@store/Store";
@@ -52,7 +53,12 @@ export const PlayerNamesPage = () => {
   }
 
   return (
-    <form className={styles['page']} navi-container="vertical" onSubmit={handleSubmit}>
+    <div className={styles['page']}>
+      <h2 className="page-header">
+        <img src={backIcon} alt="Left Arrow" onClick={()=>navigate('/')} />
+        New Game
+      </h2>
+      <form  navi-container="vertical" onSubmit={handleSubmit}>
       <h1>Select the game players</h1>
       <div className={styles['page-boxes']} navi-container="horizontal">
         <div>
@@ -70,5 +76,6 @@ export const PlayerNamesPage = () => {
         <button type="submit" className="single" navi-element="true" disabled={form.p1.length === 0 || form.p2.length === 0}>Play</button>
       </div>
     </form>
+    </div>
   )
 }
