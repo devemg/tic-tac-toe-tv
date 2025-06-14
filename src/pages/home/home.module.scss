@@ -42,9 +42,14 @@
         border: none;
         background-color: var(--background-light, gray);
         transition: all 2ms ease-in;
+        border: 3px solid transparent;
+        cursor: pointer;
 
-        &:hover {
+        &:hover,
+        &:focus {
+            border-color: #FFFFFF;
             background-color: var(--background-lighter, gray);
+            outline: none;
         }
     }
 }

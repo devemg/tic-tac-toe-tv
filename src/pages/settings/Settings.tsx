@@ -9,11 +9,18 @@ export const SettingsPage = () => {
       <h2 className="page-header">
         <img src={backIcon} alt="Left Arrow" onClick={()=>navigate('/')} />
       </h2>
-      <div className={styles['page-section']}>
+      <div className={styles['page-section']} navi-container="vertical" navi-default="true">
         <h1>Settings</h1>
-        <div className={styles['page-section-item']}>
+        <div className={styles['page-section-item']} navi-element="true" tabIndex={0}>
           <p>Language</p>
           <p>English</p>
+        </div>
+
+        <div className={styles['page-section-item']} navi-element="true" tabIndex={0}>
+          <p>Clear Players History</p>
+        </div>
+        <div className={styles['page-section-item']} navi-element="true" tabIndex={0}>
+          <p>Clear Games History</p>
         </div>
       </div>
       

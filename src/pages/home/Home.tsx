@@ -8,28 +8,28 @@ import gear from '@assets/gear.svg';
 export const HomePage = () =>  {
   const navigate = useNavigate();
   return (
-    <div className={styles['page']}>
+    <div className={styles['page']} navi-container="vertical">
         <div className={styles['page-logo']}>
           <img src="/logo.svg" alt="" />
           <h1>Tic Tac Toe</h1>
         </div>
         <p>Challenge a friend in the classic game of strategy and fun!</p>
-        <div className={styles['page-boxes']}>
-          <button onClick={()=>navigate('/profiles')}>
+        <div className={styles['page-boxes']} navi-container="horizontal" navi-default="true">
+          <button onClick={()=>navigate('/profiles')} navi-element="true">
             <img src={newgame} alt="Gamepad" />
             New Game
           </button>
-          <button onClick={()=>navigate('/board')}>
+          <button onClick={()=>navigate('/board')} navi-element="true">
             <img src={board} alt="Winner Podium" />
             Scoreboard
           </button>
         </div>
-        <div className="page-buttons">
-          <button onClick={()=>navigate('/instructions')}>
+        <div className="page-buttons" navi-container="horizontal">
+          <button onClick={()=>navigate('/instructions')} navi-element="true">
             <img src={question} alt="Question" />
             How to play?
           </button>
-          <button onClick={()=>navigate('/settings')}>
+          <button onClick={()=>navigate('/settings')} navi-element="true">
             <img src={gear} alt="Gear" />
             Settings
           </button>

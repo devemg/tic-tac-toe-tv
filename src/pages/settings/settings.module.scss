@@ -18,6 +18,10 @@
     min-width: 50vw;
     min-height: 40vh;
 
+    h1 {
+        font-size: 2vw;
+    }
+
     &-item {
         width: 100%;
         display: flex;
@@ -25,19 +29,25 @@
         box-sizing: border-box;
         padding: 0.5vw 2vw;
         border-radius: 8px;
-        border: 1px solid #FFFFFF;
+        border: 3px solid transparent;
         font-size: 1.5vw;
+        margin-bottom: 1vw;
+        background-color: var(--background-lighter, gray);
+        cursor: pointer;
 
         &:focus,
         &:hover {
             background: var(--primary-color, gray);
+            outline: none;
         }
     }
 }
 
 .page-footer {
     opacity: 0.5;
+
     p {
         text-align: center;
+        font-size: 1vw;
     }
 }

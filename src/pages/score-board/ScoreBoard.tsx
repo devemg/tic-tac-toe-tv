@@ -7,7 +7,7 @@ import deleteIcon from '@assets/delete.svg';
 import iconx from '@assets/icon-x.svg';
 import icono from '@assets/icon-o.svg';
 import backIcon from '@assets/arrow-left.svg';
-import { clear, useGameStore } from '@store/Store';
+import { clearGames, useGameStore } from '@store/Store';
 import { useNavigate } from 'react-router';
 
 export const ScoreBoardPage = () => {
@@ -15,7 +15,7 @@ export const ScoreBoardPage = () => {
   const navigate = useNavigate();
 
   const clearHistory = () => {
-    clear();
+    clearGames();
   }
 
   return (
@@ -24,41 +24,41 @@ export const ScoreBoardPage = () => {
         <img src={backIcon} alt="Left Arrow" onClick={() => navigate('/')} />
         Score Board
       </h2>
-      <div className={styles['page-section']}>
-        <div className={styles['page-row']}>
-        <div className={styles['page-winners']}>
-          {
-            getTop3(gameMatches).map((el, index) => <p key={el.name}>
-              <img src={index === 0 ? medal1 : index === 1 ? medal2 : medal3} alt="medal" />
-              {el.name}</p>)
-          }
-        </div>
-        <div className={styles['page-matches']}>
-          {
-            gameMatches.map((match) => <div key={match.startTime}>
-              <div className={styles['match-left']}>
-                <img className={styles[match.winner ?? '']} src={match.winner === 'p1' ? iconx : icono} alt="medal" />
-                <div>
-                  <p>{match.nameP1} vs. {match.nameP2}</p>
-                  <span>{Date.now() - match.startTime} ago</span>
+      <div className={styles['page-section']} navi-container="vertical" navi-default="true">
+
+        {gameMatches.length == 0 ? <h1 className={styles['page-empty']}>The board is empty, but not for long. Will it be you?</h1> : <div className={styles['page-row']}>
+          <div className={styles['page-winners']} navi-container="vertical">
+            {
+              getTop3(gameMatches).map((el, index) => <p key={el.name} navi-element="true" tabIndex={0}>
+                <img src={index === 0 ? medal1 : index === 1 ? medal2 : medal3} alt="medal" />
+                {el.name}</p>)
+            }
+          </div>
+          <div className={styles['page-matches']}>
+            {
+              gameMatches.map((match) => <div key={match.startTime}>
+                <div className={styles['match-left']}>
+                  <img className={styles[match.winner ?? '']} src={match.winner === 'p1' ? iconx : icono} alt="medal" />
+                  <div>
+                    <p>{match.nameP1} vs. {match.nameP2}</p>
+                    <span>{Date.now() - match.startTime} ago</span>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <p className={styles[match.winner ?? '']}>{!match.winner ? 'Draw Game' : match.winner === 'p1' ? match.nameP1 : match.nameP2} {match.winner && 'won!'}</p>
-                {match.endTime && <span>Duration: {match.endTime - match.startTime} s</span>}
-              </div>
-            </div>)
+                <div>
+                  <p className={styles[match.winner ?? '']}>{!match.winner ? 'Draw Game' : match.winner === 'p1' ? match.nameP1 : match.nameP2} {match.winner && 'won!'}</p>
+                  {match.endTime && <span>Duration: {match.endTime - match.startTime} s</span>}
+                </div>
+              </div>)
+            }
+          </div>
+        </div>}
+        <div className="page-buttons" navi-container="horizontal">
+          {gameMatches.length > 0 ? <button navi-element="true" onClick={clearHistory}>
+            <img src={deleteIcon} alt="Delete" />
+            Clear History</button> :
+            <button navi-element="true" onClick={() => navigate('/profiles')}>Start Game</button>
           }
         </div>
-      </div>
-      {gameMatches.length == 0 && <h1 className={styles['page-empty']}>The board is empty, but not for long. Will it be you?</h1>}
-      <div className="page-buttons" navi-container="horizontal">
-        {gameMatches.length > 0 ? <button navi-element="true" onClick={clearHistory}>
-          <img src={deleteIcon} alt="Delete" />
-          Clear History</button> :
-          <button navi-element="true" onClick={() => navigate('/profiles')}>Start Game</button>
-        }
-      </div>
       </div>
     </div>
   )

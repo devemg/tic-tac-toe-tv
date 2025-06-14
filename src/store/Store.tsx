@@ -43,11 +43,17 @@ export const pushGame = (game: GameMatch) =>
     }
   });
 
-  export const clear = () => {
-    localStorage.setItem('matches', '[]');
-    localStorage.setItem('playerNames', '[]');
-    useGameStore.setState(()=>({
-      history: [],
-      players: [],
-    }));
-  }
+export const clearGames = () => {
+  localStorage.setItem('matches', '[]');
+  useGameStore.setState(() => ({
+    history: [],
+  }));
+}
+
+
+export const clearNames = () => {
+  localStorage.setItem('playerNames', '[]');
+  useGameStore.setState(() => ({
+    players: [],
+  }));
+}
