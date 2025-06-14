@@ -89,7 +89,7 @@ export const GamePage = () => {
                     </>
                         : <p>Another game?</p>}
                     <div className="page-buttons" ref={dialogRef} navi-container="horizontal" navi-blocked="true">
-                        <button navi-element="true" onClick={() => navigate('/')}>Go Back</button>
+                        <button navi-element="true" onClick={() => navigate('/profiles')}>Go Back</button>
                         <button navi-element="true" onClick={playAgain}>Play Again</button>
                     </div>
                 </div>
@@ -99,7 +99,7 @@ export const GamePage = () => {
                     <p>sure you want to exit?</p>
                     <div className="page-buttons" ref={dialogExitRef} navi-container="horizontal" navi-blocked="true">
                         <button navi-element="true" onClick={() => setshowExitDialog(false)}>No</button>
-                        <button navi-element="true" onClick={() => navigate('/')}>Yes</button>
+                        <button navi-element="true" onClick={() => navigate('/profiles')}>Yes</button>
                     </div>
                 </div>
             </Dialog>

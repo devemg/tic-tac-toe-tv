@@ -32,6 +32,7 @@ export default defineConfig({
       '@utils': '/src/utils',
       '@hooks': '/src/hooks',
       '@assets': '/src/assets',
+      '@store': '/src/store',
     },
   },
 })

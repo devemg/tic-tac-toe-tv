@@ -7,12 +7,12 @@ import iconx from '@assets/icon-x.svg';
 import icono from '@assets/icon-o.svg';
 import { GamePlayerType } from "@models/game-player-type";
 import { NamesList } from "@components";
+import { useGameStore, pushPlayerName } from "@store/Store";
 
 
 export const PlayerNamesPage = () => {
   const navigate = useNavigate();
-  const [player1Options] = useState(['user 1', 'User 2', 'user 3', 'user 4', 'user 5']);
-  const [player2Options] = useState(['Sara', 'Roberto']);
+  const playerOptNames = useGameStore((state) => state.players);
   const { names, setNames } = useGame();
   const [form, setForm] = useState({ p1: names.p1, p2: names.p2 });
   const buttonsRef = useRef<HTMLDivElement>(null);
@@ -32,6 +32,12 @@ export const PlayerNamesPage = () => {
   const handleSubmit = (ev: FormEvent) => {
     ev.preventDefault();
     if (form.p1.length === 0 || form.p2.length === 0) return;
+    if (!playerOptNames.includes(form.p1)) {
+      pushPlayerName(form.p1);
+    }
+    if (!playerOptNames.includes(form.p2)) {
+      pushPlayerName(form.p2);
+    }
     setNames(form);
     localStorage.setItem('pNames', JSON.stringify(form));
     navigate('/game');
@@ -39,9 +45,9 @@ export const PlayerNamesPage = () => {
 
   const updateName = (newName: string, pl: GamePlayerType) => {
     if (pl === 'p1') {
-      setForm(state=>({...state, p1: newName }));
+      setForm(state => ({ ...state, p1: newName }));
     } else {
-      setForm(state=>({...state, p2: newName }));
+      setForm(state => ({ ...state, p2: newName }));
     }
   }
 
@@ -51,12 +57,12 @@ export const PlayerNamesPage = () => {
       <div className={styles['page-boxes']} navi-container="horizontal">
         <div>
           <img src={icono} alt="Player 1 Icon" />
-          {(player1Options.length > 0 || player2Options.length > 0) && <NamesList names={player1Options} player="p1" onElementClick={updateName} />}
+          {(playerOptNames.length > 0) && <NamesList names={playerOptNames.filter(name=>name !== form.p1 && name !== form.p2)} player="p1" onElementClick={updateName} />}
           <input type="text" name="p1" placeholder="Player 1" navi-element="true" onChange={handleChange} value={form.p1} />
         </div>
         <div>
           <img src={iconx} alt="Player 2 Icon" />
-          {(player1Options.length > 0 || player2Options.length > 0) && <NamesList names={player2Options} player="p2" onElementClick={updateName} />}
+          {(playerOptNames.length > 0) && <NamesList names={playerOptNames.filter(name=>name !== form.p1 && name !== form.p2)} player="p2" onElementClick={updateName} />}
           <input type="text" name="p2" placeholder="Player 2" navi-element="true" onChange={handleChange} value={form.p2} />
         </div>
       </div>
