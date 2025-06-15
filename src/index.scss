@@ -43,10 +43,8 @@ body {
   --background: #111827;
   --background-light: #1F2937;
   --background-lighter: #2d3a4c;
-  --primary-color: #36ACA7;
-  --primary-light: #4ca9a4;
-  --accent-color: #ECC94B;
-  --accent-light: #e7c54a;
+  --primary-color: #00809D;
+  --accent-color: #FF7601;
   --text-color: #FFFFFF;
 }
 
@@ -144,7 +142,6 @@ input {
       &:focus,
       &:hover {
         outline: none;
-        background-color: var(--primary-light, gray);
         border-color: #FFFFFF;
       }
     }
@@ -155,7 +152,6 @@ input {
       &:focus,
       &:hover {
         outline: none;
-        background-color: var(--accent-light, gray);
         border-color: #FFFFFF;
       }
     }

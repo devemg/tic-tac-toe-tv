@@ -34,11 +34,11 @@
       }
 
       &.p1 {
-        background-color: #379777;
+        background-color: var(--primary-color, #000000);
       }
 
       &.p2 {
-        background-color: #F4CE14;
+        background-color: var(--accent-color, #000000);
       }
     }
   }
@@ -56,11 +56,11 @@
       height: 2vw;
 
       &.p1 {
-        background-color: #379777;
+        background-color: var(--primary-color, #000000);
       }
 
       &.p2 {
-        background-color: #F4CE14;
+        background-color: var(--accent-color, #000000);
       }
     }
 
@@ -83,12 +83,12 @@
 
     &.p1:hover,
     &.p1:focus {
-      border: 0.25vw solid #379777;
+      border: 0.25vw solid var(--primary-color, #000000);
     }
 
     &.p2:hover,
     &.p2:focus {
-      border: 0.25vw solid #F4CE14;
+      border: 0.25vw solid var(--accent-color, #000000);
     }
 
     img {

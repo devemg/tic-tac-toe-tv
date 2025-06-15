@@ -20,14 +20,9 @@ export const ScoreBoardPage = () => {
   const [filteredMatches, setFilteredMatches] = useState<GameMatch[]>([...gameMatches]);
   const navigate = useNavigate();
   const buttonsRef = useRef(null);
-  const playersRef = useRef(null);
 
   useEffect(() => {
-    if (gameMatches.length > 0) {
-      focusContainerRef(playersRef);
-    } else {
       focusContainerRef(buttonsRef);
-    }
   }, []);
 
   const clearHistory = () => {
@@ -43,6 +38,7 @@ export const ScoreBoardPage = () => {
   const clearFilter = () => {
     setFilter(undefined);
     setFilteredMatches(gameMatches);
+    focusContainerRef(buttonsRef);
   }
 
   return (
@@ -54,7 +50,7 @@ export const ScoreBoardPage = () => {
       <div className={styles['page-section']} navi-container="vertical" navi-default="true">
 
         {gameMatches.length == 0 ? <h2 className={styles['page-empty']}>The board is empty, but not for long. Will it be you?</h2> : <div className={styles['page-row']}>
-          <div className={styles['page-winners']} navi-container="vertical" ref={playersRef}>
+          <div className={styles['page-winners']} navi-container="vertical">
             {
               getTop3(gameMatches).map((el, index) => <p key={el.name} navi-element="true" tabIndex={0} onClick={() => updateFilter(el)}>
                 <img src={index === 0 ? medal1 : index === 1 ? medal2 : medal3} alt="medal" />

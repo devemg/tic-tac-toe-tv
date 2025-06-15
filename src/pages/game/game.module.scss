@@ -77,11 +77,11 @@
     }
 
     &.p1 p {
-        background: #379777;
+        background: var(--primary-color, #000000);
     }
 
     &.p2 p {
-        background: #F4CE14;
+        background: var(--accent-color, #000000);
     }
 
     p {

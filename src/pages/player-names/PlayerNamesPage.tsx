@@ -92,5 +92,5 @@ export const PlayerNamesPage = () => {
         </div>
       </form>
     </div>
-  )
+  );
 }
