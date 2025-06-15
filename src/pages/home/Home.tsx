@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { focusContainerRef } from "@utils/focus.utils";
 import { Dialog } from "@components";
 import { useGame } from "@context";
-declare const tizen: any;
+import { closeApp } from "@utils/tizen.utils";
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -33,9 +33,9 @@ export const HomePage = () => {
   }, [showExitDialog]);
 
   const exitApp = () => {
-    if (typeof tizen !== "undefined" && tizen.application) {
-      tizen.application.getCurrentApplication().exit();
-    } else {
+    try {
+      closeApp();
+    } catch (e) {
       setshowExitDialog(false);
     }
   }

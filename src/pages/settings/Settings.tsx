@@ -6,13 +6,16 @@ import { useEffect, useRef, useState } from 'react';
 import { focusContainerRef } from '@utils/focus.utils';
 import { clearGames, clearNames } from '@store/Store';
 import { clsx } from 'clsx';
+import { getAppVersion } from '@utils/tizen.utils';
 
 export const SettingsPage = () => {
   const navigate = useNavigate();
   const optionsRef = useRef(null);
   const [showInfoMessage, setShowInfoMessage] = useState<boolean>();
   const [infoMessage, setInfoMessage] = useState<string>('');
+  const [version, setVersion] = useState('0.0.0');
   useEffect(() => {
+    setVersion(getAppVersion());
     focusContainerRef(optionsRef);
   }, []);
 
@@ -66,7 +69,7 @@ export const SettingsPage = () => {
 
       <div className={styles['page-footer']}>
         <p>Tic Tac Toe</p>
-        <p>v.0.0.0</p>
+        <p>v{version}</p>
       </div>
     </div>
   )
