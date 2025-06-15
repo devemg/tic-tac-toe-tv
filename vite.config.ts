@@ -2,8 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import legacy from '@vitejs/plugin-legacy'
 
-export default defineConfig({
-  base:'/tic-tac-toe-tv/',
+export default defineConfig(({ mode })=>({
+  base: mode === 'web-prod' ? '/tic-tac-toe-tv/' : '',
   plugins: [
     react({
       babel: {
@@ -36,4 +36,4 @@ export default defineConfig({
       '@store': '/src/store',
     },
   },
-})
+}))
