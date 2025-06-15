@@ -55,20 +55,21 @@ export const SettingsPage = () => {
       <div className={styles['page-section']} navi-container="vertical" navi-default="true" ref={optionsRef}>
         <h1>Settings</h1>
         <div className={styles['page-section-item']} navi-element="true" tabIndex={0}>
-          <p>Language</p>
+          <h3>Language</h3>
           <p>English</p>
         </div>
 
         <div className={styles['page-section-item']} navi-element="true" tabIndex={0} onClick={clearPlayers}>
-          <p>Clear Players History</p>
+          <h3>Clear Players</h3>
+          <p>Clear the player names suggestions.</p>
         </div>
         <div className={styles['page-section-item']} navi-element="true" tabIndex={0} onClick={clearHistory}>
-          <p>Clear Games History</p>
+          <h3>Clear Games History</h3>
+          <p>Clear the game history in score board.</p>
         </div>
       </div>
 
       <div className={styles['page-footer']}>
-        <p>Tic Tac Toe</p>
         <p>v{version}</p>
       </div>
     </div>
