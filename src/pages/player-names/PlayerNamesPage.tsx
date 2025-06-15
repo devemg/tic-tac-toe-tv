@@ -17,6 +17,8 @@ export const PlayerNamesPage = () => {
   const { names, setNames } = useGame();
   const [form, setForm] = useState({ p1: names.p1, p2: names.p2 });
   const buttonsRef = useRef<HTMLDivElement>(null);
+  const inputP1Ref = useRef<HTMLInputElement>(null);
+  const inputP2Ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     focusContainerRef(buttonsRef);
@@ -47,13 +49,14 @@ export const PlayerNamesPage = () => {
   const updateName = (newName: string, pl: GamePlayerType) => {
     if (pl === 'p1') {
       setForm(state => ({ ...state, p1: newName }));
+      inputP1Ref.current?.focus();
     } else {
       setForm(state => ({ ...state, p2: newName }));
+      inputP2Ref.current?.focus();
     }
   }
 
   const manageFormKeyDown = (event: KeyboardEvent) => {
-    console.log(event);
     if (event.key === 'Enter' || event.key === 'Select') {
     const target = event.target as HTMLElement;
       if (target.tagName === 'INPUT') {
@@ -74,13 +77,13 @@ export const PlayerNamesPage = () => {
           <div className={styles['page-boxes-names']} navi-container="vertical">
             <img src={icono} alt="Player 1 Icon" />
             <NamesList names={playerOptNames.filter(name => name !== form.p1.toLowerCase() && name !== form.p2.toLowerCase())} player="p1" onElementClick={updateName} />
-            <input type="text" name="p1" placeholder="Player 1" navi-element="true"
+            <input type="text" name="p1" placeholder="Player 1" navi-element="true" ref={inputP1Ref}
               onChange={handleChange} value={form.p1} />
           </div>
           <div className={styles['page-boxes-names']} navi-container="vertical">
             <img src={iconx} alt="Player 2 Icon" />
             <NamesList names={playerOptNames.filter(name => name !== form.p1.toLowerCase() && name !== form.p2.toLowerCase())} player="p2" onElementClick={updateName} />
-            <input type="text" name="p2" placeholder="Player 2" navi-element="true"
+            <input type="text" name="p2" placeholder="Player 2" navi-element="true" ref={inputP2Ref}
               onChange={handleChange} value={form.p2} />
           </div>
         </div>
