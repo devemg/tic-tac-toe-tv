@@ -33,17 +33,23 @@
     display: flex;
 
     button {
+        width: 18vw;
         border-radius: 8px;
         margin: 0 1vw;
         padding: 4vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         border: none;
         background-color: var(--background-light, gray);
         transition: all 2ms ease-in;
         border: 3px solid transparent;
         cursor: pointer;
+
+        img {
+            width: 5vw;
+        }
 
         &:hover,
         &:focus {

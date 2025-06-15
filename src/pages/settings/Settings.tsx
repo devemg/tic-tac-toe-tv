@@ -3,6 +3,7 @@ import styles from './settings.module.scss';
 import backIcon from '@assets/arrow-left.svg';
 import { useEffect, useRef } from 'react';
 import { focusContainerRef } from '@utils/focus.utils';
+import { clearGames, clearNames } from '@store/Store';
 
 export const SettingsPage = () => {
   const navigate = useNavigate();
@@ -11,6 +12,14 @@ export const SettingsPage = () => {
   useEffect(() => {
     focusContainerRef(optionsRef);
   }, []);
+
+  const clearPlayers = () => {
+    clearNames();
+  }
+
+  const clearHistory = () => {
+    clearGames();
+  }
 
   return (
     <div className={styles['page']}>
@@ -24,10 +33,10 @@ export const SettingsPage = () => {
           <p>English</p>
         </div>
 
-        <div className={styles['page-section-item']} navi-element="true" tabIndex={0}>
+        <div className={styles['page-section-item']} navi-element="true" tabIndex={0} onClick={clearPlayers}>
           <p>Clear Players History</p>
         </div>
-        <div className={styles['page-section-item']} navi-element="true" tabIndex={0}>
+        <div className={styles['page-section-item']} navi-element="true" tabIndex={0} onClick={clearHistory}>
           <p>Clear Games History</p>
         </div>
       </div>

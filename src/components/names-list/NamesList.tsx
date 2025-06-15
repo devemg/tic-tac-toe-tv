@@ -1,5 +1,4 @@
 import { GamePlayerType } from "@models/game-player-type";
-import styles from './names-list.module.scss';
 
 interface NameListProps {
     names: string[]; 
@@ -8,9 +7,9 @@ interface NameListProps {
 }
 
 export const NamesList: React.FC<NameListProps> = ({ names, player, onElementClick }) => {
-    return <div className={styles['name-options']}>
+    return <>
         {
-            names.map((text) => <p key={`${player}-${text}`} className={styles[player]} onClick={() => onElementClick(text, player)}>{text}</p>)
+            names.map((text) => <p tabIndex={0} navi-element="true" key={`${player}-${text}`} onClick={() => onElementClick(text, player)}>{text}</p>)
         }
-    </div>;
+    </>;
 }

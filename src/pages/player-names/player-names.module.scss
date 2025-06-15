@@ -44,6 +44,31 @@
 .page-boxes {
     display: flex;
     margin: 1vw 0;
+    min-height: 60vh;
+
+    &-names {
+        flex: auto;
+        width: 100%;
+        box-sizing: border-box;
+
+        p {
+            box-sizing: border-box;
+            font-size: 1.5vw;
+            width: 100%;
+            margin: 0 0 1vw 0;
+            cursor: pointer;
+            outline: none;
+
+            &:hover,
+            &:focus {
+                background-color: var(--background-lighter, gray);
+            }
+        }
+
+        input {
+            margin-top: auto;
+        }
+    }
 
     &>div {
         border-radius: 8px;
