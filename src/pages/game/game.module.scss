@@ -13,10 +13,10 @@
     color: var(--text-color, #FFFFFF);
 
     @media (min-width: 1900px) {
-      
-    &>img {
-     display: none;   
-    }
+
+        &>img {
+            display: none;
+        }
     }
 }
 
@@ -31,7 +31,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 2vw;
     font-weight: bold;
     flex: auto;
 
@@ -45,6 +44,19 @@
             flex-direction: row;
             img {
                 margin-left: 1vw;
+            }
+        }
+
+        p {
+            font-size: 1.5rem;
+            text-transform: capitalize;
+            
+            @media (max-width: 1900px) {
+                max-width: 50%;
+            }
+
+            @media (min-width: 1900px) {
+                font-size: 2rem;
             }
         }
 

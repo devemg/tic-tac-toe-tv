@@ -1,18 +1,28 @@
-  @font-face {
-    font-family: 'Inconsolata'; /* Choose a name for your font */
-    src: url('/fonts/Inconsolata.ttf') format('truetype');
-    font-weight: normal; /* Or specify weight if needed */
-    font-style: normal; /* Or specify style if needed */
-  }
+/*
+    @media (min-width: 1900px) {
+    }
+*/
+@font-face {
+  font-family: 'Inconsolata';
+  /* Choose a name for your font */
+  src: url('/fonts/Inconsolata.ttf') format('truetype');
+  font-weight: normal;
+  /* Or specify weight if needed */
+  font-style: normal;
+  /* Or specify style if needed */
+}
 
-  @font-face {
-    font-family: 'Jersey'; /* Choose a name for your font */
-    src: url('/fonts/Jersey25-Regular.ttf') format('truetype');
-    font-weight: normal; /* Or specify weight if needed */
-    font-style: normal; /* Or specify style if needed */
-  }
+@font-face {
+  font-family: 'Jersey';
+  /* Choose a name for your font */
+  src: url('/fonts/Jersey25-Regular.ttf') format('truetype');
+  font-weight: normal;
+  /* Or specify weight if needed */
+  font-style: normal;
+  /* Or specify style if needed */
+}
 
-  
+
 :root {
   font-family: "Inconsolata", monospace;
   font-weight: 400;
@@ -40,24 +50,66 @@ body {
   --text-color: #FFFFFF;
 }
 
-h1 {
-  font-family: "Jersey", sans-serif;
-  letter-spacing: 2px;
-}
-
+h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
+  margin: 0;
   font-family: "Jersey", sans-serif;
   letter-spacing: 1px;
 }
 
+h1 {
+  font-family: "Jersey", sans-serif;
+  letter-spacing: 2px;
+  font-size: 3rem;
+
+  @media (min-width: 1900px) {
+    font-size: 3.5rem;
+  }
+}
+
+h2 {
+  font-size: 2.5rem;
+  @media (min-width: 1900px) {
+  font-size: 3rem;  
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+  @media (min-width: 1900px) {
+    font-size: 2rem;  
+  }
+}
+
+h4 {
+  font-size: 1.25rem;
+  @media (min-width: 1900px) {
+    font-size: 1.50rem;  
+  }
+}
+
+p, input {
+  font-size: 1rem;
+
+  @media (min-width: 1900px) {
+    font-size: 1.5rem;
+  }
+}
+
 button {
-  font-size: 1.5vw;
+  font-size: 1.5rem;
   border-radius: 8px;
   border: none;
   color: #FFFFFF;
   font-family: "Inconsolata", monospace;
+
+  @media (min-width: 1900px) {
+    font-size: 2rem;
+  }
 
   &:disabled {
     opacity: 0.5;
@@ -118,8 +170,12 @@ input {
   justify-content: flex-start;
   align-items: center;
   margin: 0 !important;
-  font-size: 3vw;
   color: var(--accent-color, #000000);
+  font-size: 3rem;
+
+  @media (min-width: 1900px) {
+    font-size: 4rem;
+  }
 
   &>img {
     cursor: pointer;
@@ -131,33 +187,6 @@ input {
     }
   }
 }
-
-// .splash {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   height: 100vh;
-//   width: 100vw;
-//   overflow: hidden;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   background-color: #45474B;
-//   z-index: 1;
-
-//   img {
-//     margin-right: 1vw;
-//     width: 7vw;
-//     height: auto;
-//   }
-
-//   h1 {
-//     font-size: 6vw;
-//     font-family: 'Courier New', Courier, monospace;
-//     font-weight: bold;
-//   }
-// }
-
 
 .modal {
   background-color: #111827f0;
@@ -172,24 +201,21 @@ input {
   justify-content: center;
   align-items: center;
 
-  h1 {
-    font-size: 4vw;
-    margin: 0;
-  }
-
   .page-buttons {
     margin-top: 2vw;
 
     button {
-      font-size: 1.5vw;
       padding: 1vw 2vw;
       width: 15vw;
     }
   }
 
   p {
-    font-size: 4vw;
     margin: 0;
+    font-size: 2rem;
+    @media (min-width: 1900px) {
+      font-size: 2.5rem;
+    }
   }
 
   .btn:first-child {

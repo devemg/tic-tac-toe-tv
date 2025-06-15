@@ -51,11 +51,11 @@ export const HomePage = () => {
         <div className={styles['page-boxes']} navi-container="horizontal" navi-default="true" ref={boxesRef}>
           <button onClick={() => navigate('/profiles')} navi-element="true">
             <img src={newgame} alt="Gamepad" />
-            New Game
+            <h3>New Game</h3>
           </button>
           <button onClick={() => navigate('/board')} navi-element="true">
             <img src={board} alt="Winner Podium" />
-            Scoreboard
+            <h3>Scoreboard</h3>
           </button>
         </div>
         <div className="page-buttons" navi-container="horizontal">
@@ -71,7 +71,7 @@ export const HomePage = () => {
       </div>
       <Dialog show={showExitDialog} onClose={() => setshowExitDialog(false)} >
         <div className="modal">
-          <p>sure you want to exit?</p>
+          <p>Sure you want to exit?</p>
           <div className="page-buttons" ref={dialogExitRef} navi-container="horizontal" navi-blocked="true">
             <button navi-element="true" onClick={() => setshowExitDialog(false)}>No</button>
             <button navi-element="true" onClick={exitApp}>Yes</button>

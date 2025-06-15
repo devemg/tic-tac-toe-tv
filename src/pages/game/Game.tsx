@@ -75,7 +75,7 @@ export const GamePage = () => {
 
     return (
         <div className={styles['page']}>
-            <h2 className={clsx(
+            <div className={clsx(
                         'page-header',
                         styles['page-header']
                     )}>
@@ -97,7 +97,7 @@ export const GamePage = () => {
                         <img src={iconx} alt="X" />
                     </div>
                 </div>
-            </h2>
+            </div>
 
             <div className={styles['board-container']}>
                 <Board ref={boardRef} activePlayer={activePlayer} winner={winner} togglePlayer={toglePlayer} manageWinner={manageWinner} />

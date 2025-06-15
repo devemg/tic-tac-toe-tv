@@ -49,22 +49,22 @@ export const SettingsPage = () => {
         <p>{infoMessage}</p>
       </div>
 
-      <h2 className="page-header">
+      <h1 className="page-header">
         <img src={backIcon} alt="Left Arrow" onClick={() => navigate('/')} />
-      </h2>
+        Settings
+      </h1>
       <div className={styles['page-section']} navi-container="vertical" navi-default="true" ref={optionsRef}>
-        <h1>Settings</h1>
         <div className={styles['page-section-item']} navi-element="true" tabIndex={0}>
-          <h3>Language</h3>
+          <h2>Language</h2>
           <p>English</p>
         </div>
 
         <div className={styles['page-section-item']} navi-element="true" tabIndex={0} onClick={clearPlayers}>
-          <h3>Clear Players</h3>
+          <h2>Clear Players</h2>
           <p>Clear the player names suggestions.</p>
         </div>
         <div className={styles['page-section-item']} navi-element="true" tabIndex={0} onClick={clearHistory}>
-          <h3>Clear Games History</h3>
+          <h2>Clear Games History</h2>
           <p>Clear the game history in score board.</p>
         </div>
       </div>

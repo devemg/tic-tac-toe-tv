@@ -47,13 +47,13 @@ export const ScoreBoardPage = () => {
 
   return (
     <div className={styles['page']}>
-      <h2 className="page-header">
+      <h1 className="page-header">
         <img src={backIcon} alt="Left Arrow" onClick={() => navigate('/')} />
         Score Board  {filter && `- ${filter}`}
-      </h2>
+      </h1>
       <div className={styles['page-section']} navi-container="vertical" navi-default="true">
 
-        {gameMatches.length == 0 ? <h1 className={styles['page-empty']}>The board is empty, but not for long. Will it be you?</h1> : <div className={styles['page-row']}>
+        {gameMatches.length == 0 ? <h2 className={styles['page-empty']}>The board is empty, but not for long. Will it be you?</h2> : <div className={styles['page-row']}>
           <div className={styles['page-winners']} navi-container="vertical" ref={playersRef}>
             {
               getTop3(gameMatches).map((el, index) => <p key={el.name} navi-element="true" tabIndex={0} onClick={() => updateFilter(el)}>
@@ -71,7 +71,7 @@ export const ScoreBoardPage = () => {
                     <span>{Date.now() - match.startTime} ago</span>
                   </div>
                 </div>
-                <div>
+                <div className={styles['match-right']}>
                   <p className={styles[match.winner ?? '']}>{!match.winner ? 'Draw Game' : match.winner === 'p1' ? match.nameP1 : match.nameP2} {match.winner && 'won!'}</p>
                   {match.endTime && <span>Duration: {match.endTime - match.startTime} s</span>}
                 </div>

@@ -12,17 +12,17 @@ export const InstructionsPage = () => {
   const navigate = useNavigate();
   return (
     <div className={styles['page']}>
-      <h2 className="page-header">
+      <div className="page-header">
         <img src={backIcon} alt="Left Arrow" onClick={() => navigate('/')} />
-      </h2>
+      </div>
       <div className={styles['page-section']}>
         <div className={styles['page-overview']}>
-          <h2 className={styles['primary-text']}>Game Overview</h2>
+          <h1 className={styles['primary-text']}>Game Overview</h1>
           <p>Tic Tac Toe is a classic strategy game played on a 3×3 grid. Two players take turns marking spaces with their symbols (X and O). The first player to get three of their marks in a row wins!</p>
           <div className={styles['page-note']}>
             <img src={ideaIcon} alt="Idea" />
             <div>
-              <h3>Quick Tip</h3>
+              <h4>Quick Tip</h4>
               <p>Control the center square for better winning chances!</p>
             </div>
           </div>

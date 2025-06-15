@@ -67,12 +67,12 @@ export const PlayerNamesPage = () => {
 
   return (
     <div className={styles['page']}>
-      <h2 className="page-header">
+      <h1 className="page-header">
         <img src={backIcon} alt="Left Arrow" onClick={() => navigate('/')} />
         New Game
-      </h2>
+      </h1>
       <form navi-container="vertical" onSubmit={handleSubmit} onKeyDown={manageFormKeyDown}>
-        <h1>Select the game players</h1>
+        <h2>Select the game players</h2>
         <div className={styles['page-boxes']} navi-container="horizontal">
           <div className={styles['page-boxes-names']} navi-container="vertical">
             <img src={icono} alt="Player 1 Icon" />
