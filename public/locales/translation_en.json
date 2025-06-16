@@ -1,0 +1,77 @@
+{
+    "no": "No",
+    "yes": "Yes",
+    "exit-text": "Sure you want to exit?",
+    "player-1": "Player 1",
+    "player-2": "Player 2",
+    "home": {
+        "line": "Challenge a friend in the classic game of strategy and fun!",
+        "new-game": "New Game",
+        "scoreboard": "Scoreboard",
+        "how-to": "How to play?",
+        "settings": "Settings"
+    },
+    "settings": {
+        "title": "Settings",
+        "language": "Language",
+        "clear-players": "Clear Players",
+        "clear-players-description": "Clear the player names suggestions.",
+        "clear-history": "Clear Games History",
+        "clear-history-description": "Clear the game history in score board.",
+        "select-lang": "Select your preferend language"
+    },
+    "inst": {
+        "overview": "Game Overview",
+        "description": "Tic Tac Toe is a classic strategy game played on a 3×3 grid. Two players take turns marking spaces with their symbols (X and O). The first player to get three of their marks in a row wins!",
+        "quick-tip": "Quick Tip",
+        "quick-tip-description": "Control the center square for better winning chances!",
+        "game-rules": "Game Rules",
+        "take-turns": "Take Turns",
+        "take-turns-description": "Players alternate placing their marks (X or O) on empty squares of the 3×3 grid.",
+        "three-row": "Get Three in a Row",
+        "three-row-description": "Win by getting three of your marks in a row - horizontally, vertically, or diagonally.",
+        "draw-game": "Draw Game",
+        "draw-game-description": "If all squares are filled and no player has three in a row, the game ends in a draw.",
+        "winning-patterns": "Winning Patterns",
+        "vertical": "Vertical",
+        "horizontal": "Horizontal",
+        "diagonal": "Diagonal",
+        "tv-controls": "Smart TV Controls",
+        "arrow-controls": "Arrow Keys",
+        "arrow-controls-description": "Navigate the game board with the control arrows.",
+        "selection-button":"OK/Selection Button",
+        "selection-button-description": "Place your mark on selected square.",
+        "back-button": "Back Button",
+        "back-button-description": "Return to previous menu.",
+        "control-center": "Control the Center",
+        "control-center-description": "The center square gives you the most winning opportunities.",
+        "block": "Block Your Opponent",
+        "block-description": "Always prevent your opponent from getting three in a row.",
+        "forks": "Create Forks",
+        "fork-description": "Set up multiple winning opportunities at once.",
+        "corner": "Corner Strategy",
+        "corner-description": "Corners are the second-best positions after the center."    
+    },
+    "sb": {
+        "title": "Score Board",
+        "empty": "The board is empty, but not for long. Will it be you?",
+        "ago": "ago",
+        "draw-game": "Draw Game",
+        "won": "won",
+        "duration": "Duration",
+        "clear-history": "Clear History",
+        "start-game": "Start Game"
+    },
+    "names": {
+        "title": "New Game",
+        "selection": "Select the game players",
+        "play": "Play"
+    },
+    "game": {
+        "congrats": "Congratulations!",
+        "winner": "Winner",
+        "go-back": "Go Back",
+        "play-again": "Play Again",
+        "play-again-text": "Give it another shot?"
+    }
+}

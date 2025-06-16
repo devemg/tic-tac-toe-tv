@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.scss'
+import './localization'
 import { HashRouter, Route, Routes } from 'react-router'
 import { App } from './App'
 import { GamePage, HomePage, InstructionsPage, ScoreBoardPage, PlayerNamesPage, SettingsPage } from '@pages';

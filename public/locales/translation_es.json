@@ -1,0 +1,77 @@
+{
+    "no": "No",
+    "yes": "Sí",
+    "exit-text": "¿Estás seguro de que quieres salir?",
+    "player-1": "Jugador 1",
+    "player-2": "Jugador 2",
+    "home": {
+        "line": "¡Reta a un amigo en el clásico juego de estrategia y diversión!",
+        "new-game": "Nuevo Juego",
+        "scoreboard": "Marcador",
+        "how-to": "¿Cómo se juega?",
+        "settings": "Configuración"
+    },
+    "settings": {
+        "title": "Configuración",
+        "language": "Idioma",
+        "clear-players": "Borrar Jugadores",
+        "clear-players-description": "Borra las sugerencias de nombres de jugadores.",
+        "clear-history": "Borrar Historial de Juegos",
+        "clear-history-description": "Borra el historial de partidas en el marcador.",
+        "select-lang": "Selecciona tu idioma preferido"
+    },
+    "inst": {
+        "overview": "Resumen del Juego",
+        "description": "Tres en Raya es un juego clásico de estrategia que se juega en una cuadrícula de 3×3. Dos jugadores se turnan para marcar espacios con sus símbolos (X y O). ¡El primero en lograr tres marcas en fila gana!",
+        "quick-tip": "Consejo Rápido",
+        "quick-tip-description": "¡Controla la casilla central para tener más posibilidades de ganar!",
+        "game-rules": "Reglas del Juego",
+        "take-turns": "Turnarse",
+        "take-turns-description": "Los jugadores se turnan para colocar sus marcas (X u O) en los espacios vacíos de la cuadrícula de 3×3.",
+        "three-row": "Tres en Línea",
+        "three-row-description": "Gana al conseguir tres de tus marcas en línea, ya sea horizontal, vertical o diagonal.",
+        "draw-game": "Empate",
+        "draw-game-description": "Si todas las casillas están llenas y ningún jugador logra tres en línea, el juego termina en empate.",
+        "winning-patterns": "Patrones Ganadores",
+        "vertical": "Vertical",
+        "horizontal": "Horizontal",
+        "diagonal": "Diagonal",
+        "tv-controls": "Controles del Smart TV",
+        "arrow-controls": "Flechas de Dirección",
+        "arrow-controls-description": "Navega por el tablero con las flechas de control.",
+        "selection-button": "Botón OK/Selección",
+        "selection-button-description": "Coloca tu marca en la casilla seleccionada.",
+        "back-button": "Botón Atrás",
+        "back-button-description": "Regresa al menú anterior.",
+        "control-center": "Controla el Centro",
+        "control-center-description": "La casilla central ofrece más oportunidades de ganar.",
+        "block": "Bloquea a tu Oponente",
+        "block-description": "Evita que tu oponente consiga tres en línea.",
+        "forks": "Crea Bifurcaciones",
+        "fork-description": "Crea múltiples oportunidades de ganar al mismo tiempo.",
+        "corner": "Estrategia de Esquinas",
+        "corner-description": "Las esquinas son la segunda mejor opción después del centro."
+    },
+    "sb": {
+        "title": "Marcador",
+        "empty": "El tablero está vacío, pero no por mucho. ¿Serás tú?",
+        "ago": "hace",
+        "draw-game": "Empate",
+        "won": "ganó",
+        "duration": "Duración",
+        "clear-history": "Borrar Historial",
+        "start-game": "Iniciar Juego"
+    },
+    "names": {
+        "title": "Nuevo Juego",
+        "selection": "Selecciona los jugadores",
+        "play": "Jugar"
+    },
+    "game": {
+        "congrats": "¡Felicidades!",
+        "winner": "Ganador",
+        "go-back": "Regresar",
+        "play-again": "Jugar de Nuevo",
+        "play-again-text": "¿Quieres intentarlo otra vez?"
+    }
+}
