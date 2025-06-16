@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -36,6 +36,21 @@ jobs:
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NAVILIB_PACKAGE_TOKEN }}" >> ~/.npmrc
       - name: Install dependencies
         run: npm ci
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Pull latest with full history
+        run: git fetch --unshallow || true
+      - name: Bump version and amend last commit
+        run: |
+          npm version patch --no-git-tag-version
+          git add package.json package-lock.json
+          git commit --amend --no-edit
+          NEW_TAG=$(node -p "require('./package.json').version" | sed 's/^/v/')
+          git tag -a "$NEW_TAG" -m "Release $NEW_TAG"
+          git push --force-with-lease
+          git push origin "$NEW_TAG"
       - name: Build
         run: npm run build:tv
       - name: Setup Pages
