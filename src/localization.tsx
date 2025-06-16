@@ -14,7 +14,7 @@ i18next
       escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
     },
     backend: {
-      loadPath: '/locales/{{ns}}_{{lng}}.json'
+      loadPath: `${import.meta.env.BASE_URL}locales/{{ns}}_{{lng}}.json`,
     },
       supportedLngs: [...Object.keys(supportedLanguages)],
       debug: false,
