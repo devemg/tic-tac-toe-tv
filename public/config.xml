@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/tictactoe" version="0.0.2" viewmodes="maximized">
-    <tizen:application id="m0OKEDWP1Q.tictactoe" package="m0OKEDWP1Q" required_version="2.3"/>
-    <author href="http://devemg.com" email="devemg001@gmail.com">devemg</author>
-    <content src="index.html"/>
-    <description>Tic Tac Toe is a classic strategy game played on a 3x3 grid. Two players take turns marking spaces with their symbols (X and O). The first player to get three of their marks in a row wins!</description>
-    <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
-    <icon src="icon.png"/>
-    <tizen:metadata key="http://tizen.org/metadata/app_ui_type/base_screen_resolution" value="extensive"/>
-    <tizen:setting screen-orientation="landscape" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
-    <name>Tic Tac Toe</name>
-    <name xml:lang="en-gb">English</name>
-    <name xml:lang="es-us">Spanish</name>
-    <tizen:profile name="tv-samsung"/>
-    <tizen:video_splash_screen ready_when="video-finished">
-        <tizen:vss_default video="splash.mp4" background_image="splash.png" background_color="#111827" image="splash.png" image_border="0px stretch"/>
-        <tizen:vss_landscape video="splash.mp4" background_image="splash.png" background_color="#111827" image="splash.png" image_border="0px stretch"/> 
-    </tizen:video_splash_screen>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/tictactoe" version="v0.0.5" viewmodes="maximized">
+  <tizen:application id="m0OKEDWP1Q.tictactoe" package="m0OKEDWP1Q" required_version="2.3"/>
+  <author href="http://devemg.com" email="devemg001@gmail.com">devemg</author>
+  <content src="index.html"/>
+  <description>Tic Tac Toe is a classic strategy game played on a 3x3 grid. Two players take turns marking spaces with their symbols (X and O). The first player to get three of their marks in a row wins!</description>
+  <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
+  <icon src="icon.png"/>
+  <tizen:metadata key="http://tizen.org/metadata/app_ui_type/base_screen_resolution" value="extensive"/>
+  <tizen:setting screen-orientation="landscape" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
+  <name>Tic Tac Toe</name>
+  <name xml:lang="en-gb">English</name>
+  <name xml:lang="es-us">Spanish</name>
+  <tizen:profile name="tv-samsung"/>
+  <tizen:video_splash_screen ready_when="video-finished">
+    <tizen:vss_default video="splash.mp4" background_image="splash.png" background_color="#111827" image="splash.png" image_border="0px stretch"/>
+    <tizen:vss_landscape video="splash.mp4" background_image="splash.png" background_color="#111827" image="splash.png" image_border="0px stretch"/>
+  </tizen:video_splash_screen>
 </widget>
