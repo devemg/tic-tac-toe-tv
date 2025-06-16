@@ -4,11 +4,10 @@ on:
   push:
     branches:
       - main
-
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -25,25 +24,47 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: 'npm'
+
       - name: Setup .npmrc for GitHub Packages
         run: |
           echo "@devemg:registry=https://npm.pkg.github.com/" >> ~/.npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NAVILIB_PACKAGE_TOKEN }}" >> ~/.npmrc
+
       - name: Install dependencies
         run: npm ci
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+
+      - name: Bump version, amend commit message, and push
+        run: |
+          npm version patch
+          git commit --amend -m "new version $(git log -1 --pretty=%B) [skip ci]"
+          git push --force-with-lease origin HEAD
+          git push origin --tags
+
       - name: Build
         run: npm run build:tv
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
