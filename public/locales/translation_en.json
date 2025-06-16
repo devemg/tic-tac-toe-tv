@@ -18,16 +18,18 @@
         "clear-players-description": "Clear the player names suggestions.",
         "clear-history": "Clear Games History",
         "clear-history-description": "Clear the game history in score board.",
-        "select-lang": "Select your preferend language"
+        "select-lang": "Select your preferend language",
+        "removed-players": "'The player suggestions has been removed.'",
+        "removed-history": "The player history has been removed."
     },
     "inst": {
         "overview": "Game Overview",
-        "description": "Tic Tac Toe is a classic strategy game played on a 3×3 grid. Two players take turns marking spaces with their symbols (X and O). The first player to get three of their marks in a row wins!",
+        "description": "Tic Tac Toe is a classic strategy game played on a 3x3 grid. Two players take turns marking spaces with their symbols (X and O). The first player to get three of their marks in a row wins!",
         "quick-tip": "Quick Tip",
         "quick-tip-description": "Control the center square for better winning chances!",
         "game-rules": "Game Rules",
         "take-turns": "Take Turns",
-        "take-turns-description": "Players alternate placing their marks (X or O) on empty squares of the 3×3 grid.",
+        "take-turns-description": "Players alternate placing their marks (X or O) on empty squares of the 3x3 grid.",
         "three-row": "Get Three in a Row",
         "three-row-description": "Win by getting three of your marks in a row - horizontally, vertically, or diagonally.",
         "draw-game": "Draw Game",

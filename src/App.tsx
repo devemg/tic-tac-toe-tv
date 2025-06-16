@@ -16,9 +16,9 @@ export const App = () => {
         backManager.init('back', () => {
             navigate('/');
         });
-        document.addEventListener('keyup', handleKeyup);
+        document.addEventListener('keydown', handleKeyup);
         return () => {
-            document.removeEventListener('keyup', handleKeyup);
+            document.removeEventListener('keydown', handleKeyup);
             backManager.close();
         }
     }, []);

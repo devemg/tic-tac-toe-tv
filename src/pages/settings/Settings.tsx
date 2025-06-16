@@ -39,12 +39,12 @@ export const SettingsPage = () => {
 
   const clearPlayers = () => {
     clearNames();
-    showMessage('The player suggestions has been removed.');
+    showMessage(t('settings.removed-players'));
   }
 
   const clearHistory = () => {
     clearGames();
-    showMessage('The player history has been removed.');
+    showMessage(t('settings.removed-history'));
   }
 
   const showMessage = (message: string) => {

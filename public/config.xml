@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/tictactoe" version="1.0.0" viewmodes="maximized">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/tictactoe" version="0.0.2" viewmodes="maximized">
     <tizen:application id="m0OKEDWP1Q.tictactoe" package="m0OKEDWP1Q" required_version="2.3"/>
+    <author href="http://devemg.com" email="devemg001@gmail.com">devemg</author>
     <content src="index.html"/>
+    <description>Tic Tac Toe is a classic strategy game played on a 3x3 grid. Two players take turns marking spaces with their symbols (X and O). The first player to get three of their marks in a row wins!</description>
     <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
     <icon src="icon.png"/>
     <tizen:metadata key="http://tizen.org/metadata/app_ui_type/base_screen_resolution" value="extensive"/>

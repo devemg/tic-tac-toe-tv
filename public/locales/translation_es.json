@@ -18,16 +18,18 @@
         "clear-players-description": "Borra las sugerencias de nombres de jugadores.",
         "clear-history": "Borrar Historial de Juegos",
         "clear-history-description": "Borra el historial de partidas en el marcador.",
-        "select-lang": "Selecciona tu idioma preferido"
+        "select-lang": "Selecciona tu idioma preferido",
+        "removed-players": "Se han eliminado las sugerencias de los jugadores.",
+        "removed-history": "Se ha eliminado el historial de partidas."
     },
     "inst": {
         "overview": "Resumen del Juego",
-        "description": "Tres en Raya es un juego clásico de estrategia que se juega en una cuadrícula de 3×3. Dos jugadores se turnan para marcar espacios con sus símbolos (X y O). ¡El primero en lograr tres marcas en fila gana!",
+        "description": "Tres en Raya es un juego clásico de estrategia que se juega en una cuadrícula de 3x3. Dos jugadores se turnan para marcar espacios con sus símbolos (X y O). ¡El primero en lograr tres marcas en fila gana!",
         "quick-tip": "Consejo Rápido",
         "quick-tip-description": "¡Controla la casilla central para tener más posibilidades de ganar!",
         "game-rules": "Reglas del Juego",
         "take-turns": "Turnarse",
-        "take-turns-description": "Los jugadores se turnan para colocar sus marcas (X u O) en los espacios vacíos de la cuadrícula de 3×3.",
+        "take-turns-description": "Los jugadores se turnan para colocar sus marcas (X u O) en los espacios vacíos de la cuadrícula de 3x3.",
         "three-row": "Tres en Línea",
         "three-row-description": "Gana al conseguir tres de tus marcas en línea, ya sea horizontal, vertical o diagonal.",
         "draw-game": "Empate",

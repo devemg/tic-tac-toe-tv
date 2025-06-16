@@ -55,7 +55,7 @@ jobs:
           git push origin --tags
 
       - name: Build
-        run: npm run build:tv
+        run: npm run build:web
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
