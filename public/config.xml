@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/tictactoe" version="0.0.7" viewmodes="maximized">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/tictactoe" version="0.0.8" viewmodes="maximized">
   <tizen:application id="m0OKEDWP1Q.tictactoe" package="m0OKEDWP1Q" required_version="2.3"/>
   <author href="http://devemg.com" email="devemg001@gmail.com">devemg</author>
   <content src="index.html"/>
