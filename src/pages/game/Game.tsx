@@ -12,9 +12,10 @@ import clsx from 'clsx';
 import { pushGame, useGameStore } from "@store/Store";
 import { GameMatch } from "@models/GameMatch";
 import { useTranslation } from "react-i18next";
+import { getRandomPlayer } from "@utils/game.utils";
 
 export const GamePage = () => {
-    const [activePlayer, setActivePlayer] = useState<GamePlayerType>('p1');
+    const [activePlayer, setActivePlayer] = useState<GamePlayerType>(getRandomPlayer());
     const [winner, setWinner] = useState<GamePlayerType | undefined | null>();
     const [showExitDialog, setshowExitDialog] = useState(false);
     const { backManager } = useGame();

@@ -50,3 +50,11 @@ export const checkBoardFilled = (board: number[][]) => {
     }
     return true;
 }
+/**
+ * get a random start player 
+ * 
+ * @returns 
+ */
+export const getRandomPlayer = (): GamePlayerType => {
+    return Math.random() < 0.5 ? 'p1' : 'p2';
+}
