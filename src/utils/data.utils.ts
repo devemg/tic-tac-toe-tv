@@ -3,6 +3,7 @@ import { GameMatch } from "@models/GameMatch";
 import { TopItem } from "@models/top-item";
 import i18next from "i18next";
 import { enUS, es } from 'date-fns/locale';
+import { v4 as uuidv4 } from 'uuid';
 
 export const getTop3 = (
     gameData: GameMatch[]
@@ -43,3 +44,15 @@ export const getDateLocale = () => {
     }
     return enUS;
 }
+
+/**
+ * Get device ID from local storage
+ */
+export const getDeviceId = () => {
+    if (!!localStorage.getItem('did')) {
+        return localStorage.getItem('did');
+    }
+    const uid = uuidv4();
+    localStorage.setItem('did', uid);
+    return uid;
+  }

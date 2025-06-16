@@ -13,6 +13,7 @@ import { pushGame, useGameStore } from "@store/Store";
 import { GameMatch } from "@models/GameMatch";
 import { useTranslation } from "react-i18next";
 import { getRandomPlayer } from "@utils/game.utils";
+import { useEvent } from "@analytics/useEvent";
 
 export const GamePage = () => {
     const [activePlayer, setActivePlayer] = useState<GamePlayerType>(getRandomPlayer());
@@ -20,6 +21,7 @@ export const GamePage = () => {
     const [showExitDialog, setshowExitDialog] = useState(false);
     const { backManager } = useGame();
     const { p1Name, p2Name } = useGameStore((state) => state);
+    const { sendPlayAgain, sendExitGame } = useEvent();
     const navigate = useNavigate();
     const boardRef = useRef<HTMLDivElement>(null);
     const dialogRef = useRef<HTMLDivElement>(null);
@@ -45,9 +47,15 @@ export const GamePage = () => {
     }
 
     const playAgain = () => {
-        setActivePlayer('p1');
+        setActivePlayer(getRandomPlayer());
         setStartTime(Date.now());
         setWinner(undefined);
+        sendPlayAgain();
+    }
+
+    const exitGame = () => {
+        sendExitGame();
+        navigate('/profiles', { replace: true });
     }
 
     useEffect(() => {
@@ -124,7 +132,7 @@ export const GamePage = () => {
                     <p>{t('exit-text')}</p>
                     <div className="page-buttons" ref={dialogExitRef} navi-container="horizontal" navi-blocked="true">
                         <button navi-element="true" onClick={() => setshowExitDialog(false)}>{t('no')}</button>
-                        <button navi-element="true" onClick={() => navigate('/profiles', { replace: true })}>{t('yes')}</button>
+                        <button navi-element="true" onClick={exitGame}>{t('yes')}</button>
                     </div>
                 </div>
             </Dialog>

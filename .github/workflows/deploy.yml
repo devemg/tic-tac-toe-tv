@@ -66,7 +66,9 @@ jobs:
           git push origin "v$NEW_VERSION"
 
       - name: Build
-        run: npm run build:web
+        run: |
+           echo "VITE_GA_MEASUREMENT_ID=${{ secrets.VITE_GA_MEASUREMENT_ID }}" >> .env
+           npm run build:web
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

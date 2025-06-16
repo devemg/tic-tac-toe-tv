@@ -10,6 +10,7 @@ import { Dialog } from "@components";
 import { useGame } from "@context";
 import { closeApp } from "@utils/tizen.utils";
 import { useTranslation } from "react-i18next";
+import { useEvent } from "@analytics/useEvent";
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ export const HomePage = () => {
   const [showExitDialog, setshowExitDialog] = useState(false);
   const dialogExitRef = useRef<HTMLDivElement>(null);
   const { backManager } = useGame();
+  const { sendExitApp, sendInstructions, sendSettings, sendScoreboard, sendNewGame } = useEvent();
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -37,9 +39,23 @@ export const HomePage = () => {
   const exitApp = () => {
     try {
       closeApp();
+      sendExitApp();
     } catch (e) {
       setshowExitDialog(false);
     }
+  }
+
+  const goTo = (path: string) => {
+    if (path.includes('instructions')) {
+      sendInstructions();
+    } else if (path.includes('settings')) {
+      sendSettings();
+    } else if (path.includes('board')) {
+      sendScoreboard();
+    } else if (path.includes('profiles')) {
+      sendNewGame();
+    }
+    navigate(path);
   }
 
   return (
@@ -51,21 +67,21 @@ export const HomePage = () => {
         </div>
         <p>{t('home.line')}</p>
         <div className={styles['page-boxes']} navi-container="horizontal" navi-default="true" ref={boxesRef}>
-          <button onClick={() => navigate('/profiles')} navi-element="true">
+          <button onClick={() => goTo('/profiles')} navi-element="true">
             <img src={newgame} alt="Gamepad" />
             <h3>{t('home.new-game')}</h3>
           </button>
-          <button onClick={() => navigate('/board')} navi-element="true">
+          <button onClick={() => goTo('/board')} navi-element="true">
             <img src={board} alt="Winner Podium" />
             <h3>{t('home.scoreboard')}</h3>
           </button>
         </div>
         <div className="page-buttons" navi-container="horizontal">
-          <button onClick={() => navigate('/instructions')} navi-element="true">
+          <button onClick={() => goTo('/instructions')} navi-element="true">
             <img src={question} alt="Question" />
             {t('home.how-to')}
           </button>
-          <button onClick={() => navigate('/settings')} navi-element="true">
+          <button onClick={() => goTo('/settings')} navi-element="true">
             <img src={gear} alt="Gear" />
             {t('home.settings')}
           </button>

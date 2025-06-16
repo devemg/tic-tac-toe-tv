@@ -12,6 +12,7 @@ import { Dialog } from '@components';
 import { LanguageOption, languageOptions, supportedLanguages } from '@models/language';
 import i18next from "i18next";
 import { useTranslation } from 'react-i18next';
+import { useEvent } from '@analytics/useEvent';
 
 export const SettingsPage = () => {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ export const SettingsPage = () => {
   const [lang, setLang] = useState<LanguageOption>({ language: supportedLanguages[i18next.language], code: i18next.language });
   const dialogRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
+  const { sendChangeLang, sendRemoveGameHistory, sendRemovePlayersHistory } = useEvent();
 
 
   useEffect(() => {
@@ -40,11 +42,13 @@ export const SettingsPage = () => {
 
   const clearPlayers = () => {
     clearNames();
+    sendRemovePlayersHistory();
     showMessage(t('settings.removed-players'));
   }
 
   const clearHistory = () => {
     clearGames();
+    sendRemoveGameHistory();
     showMessage(t('settings.removed-history'));
   }
 
@@ -64,6 +68,7 @@ export const SettingsPage = () => {
   const selectLanguage = (lang: LanguageOption) => {
     setLang(lang);
     i18next.changeLanguage(lang.code); // Update language in i18next
+    sendChangeLang(lang.code);
     setshowExitDialog(false);
   }
 
