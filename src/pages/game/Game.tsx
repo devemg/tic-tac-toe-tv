@@ -9,7 +9,7 @@ import iconx from '@assets/icon-x.svg';
 import icono from '@assets/icon-o.svg';
 import backIcon from '@assets/arrow-left.svg';
 import clsx from 'clsx';
-import { pushGame } from "@store/Store";
+import { pushGame, useGameStore } from "@store/Store";
 import { GameMatch } from "@models/GameMatch";
 import { useTranslation } from "react-i18next";
 
@@ -17,7 +17,8 @@ export const GamePage = () => {
     const [activePlayer, setActivePlayer] = useState<GamePlayerType>('p1');
     const [winner, setWinner] = useState<GamePlayerType | undefined | null>();
     const [showExitDialog, setshowExitDialog] = useState(false);
-    const { backManager, names } = useGame();
+    const { backManager } = useGame();
+    const { p1Name, p2Name } = useGameStore((state) => state);
     const navigate = useNavigate();
     const boardRef = useRef<HTMLDivElement>(null);
     const dialogRef = useRef<HTMLDivElement>(null);
@@ -33,8 +34,8 @@ export const GamePage = () => {
         setWinner(winner);
 
         const match: GameMatch = {
-            nameP1: names.p1,
-            nameP2: names.p2,
+            nameP1: p1Name,
+            nameP2: p2Name,
             startTime: startTime,
             endTime: Date.now(),
             winner,
@@ -88,14 +89,14 @@ export const GamePage = () => {
                         activePlayer === 'p1' && styles['active']
                     )}
                     >
-                        <p>{names.p1}</p>
+                        <p>{p1Name}</p>
                         <img src={icono} alt="O" />
                     </div>
                     <div className={clsx(
                         styles[activePlayer],
                         activePlayer === 'p2' && styles['active']
                     )}>
-                        <p>{names.p2}</p>
+                        <p>{p2Name}</p>
                         <img src={iconx} alt="X" />
                     </div>
                 </div>
@@ -108,7 +109,7 @@ export const GamePage = () => {
                 <div className="modal">
                     {winner !== null ? <>
                         <h1>{t('game.congrats')}</h1>
-                        <p>{t('game.winner')}: {activePlayer === 'p1' ? names.p1 : names.p2}</p>
+                        <p>{t('game.winner')}: {activePlayer === 'p1' ? p1Name : p2Name}</p>
                     </>
                         : <p>{t('game.play-again-text')}</p>}
                     <div className="page-buttons" ref={dialogRef} navi-container="horizontal" navi-blocked="true">

@@ -1,4 +1,3 @@
-import { useGame } from "@context";
 import { focusContainerRef } from "@utils/focus.utils";
 import { ChangeEvent, FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router"
@@ -8,19 +7,18 @@ import icono from '@assets/icon-o.svg';
 import backIcon from '@assets/arrow-left.svg';
 import { GamePlayerType } from "@models/game-player-type";
 import { NamesList } from "@components";
-import { useGameStore, pushPlayerName } from "@store/Store";
+import { useGameStore, pushPlayerName, updateNames } from "@store/Store";
 import { useTranslation } from "react-i18next";
 
 
 export const PlayerNamesPage = () => {
   const navigate = useNavigate();
-  const playerOptNames = useGameStore((state) => state.players);
-  const { names, setNames } = useGame();
-  const [form, setForm] = useState({ p1: names.p1, p2: names.p2 });
+  const { p1Name, p2Name, players:playerOptNames } = useGameStore((state) => state);
+  const { t } = useTranslation();
+  const [form, setForm] = useState({ p1: p1Name != '' ? p1Name : t('player-1'), p2: p2Name != '' ? p2Name : t('player-2') });
   const buttonsRef = useRef<HTMLDivElement>(null);
   const inputP1Ref = useRef<HTMLInputElement>(null);
   const inputP2Ref = useRef<HTMLInputElement>(null);
-  const { t } = useTranslation();
 
   useEffect(() => {
     focusContainerRef(buttonsRef);
@@ -43,8 +41,7 @@ export const PlayerNamesPage = () => {
     if (!playerOptNames.includes(form.p2.toLowerCase())) {
       pushPlayerName(form.p2.toLowerCase());
     }
-    setNames(form);
-    localStorage.setItem('pNames', JSON.stringify(form));
+    updateNames(form);
     navigate('/game');
   };
 

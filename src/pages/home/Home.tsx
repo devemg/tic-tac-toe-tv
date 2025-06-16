@@ -2,7 +2,7 @@ import { useNavigate } from "react-router"
 import styles from './home.module.scss';
 import newgame from '@assets/gamepad.svg';
 import board from '@assets/podium-winner.svg';
-import question from '@assets/question.svg';
+import question from '@assets/info.svg';
 import gear from '@assets/gear.svg';
 import { useEffect, useRef, useState } from "react";
 import { focusContainerRef } from "@utils/focus.utils";

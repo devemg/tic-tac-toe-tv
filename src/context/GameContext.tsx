@@ -1,22 +1,16 @@
-import { createContext, ReactNode, useContext, useState } from "react";
-import { GameContext, GamePlayerNames } from "./game";
+import { createContext, ReactNode, useContext } from "react";
+import { GameContext } from "./game";
 import { BackManager } from "./back-manager";
 
 const backManager = new BackManager();
 const defaultGame: GameContext = {
-    names: {
-        p1: 'Player 1',
-        p2: 'Player 2',
-    },
-    setNames: ()=>{},
     backManager,
 }
 export const GContext = createContext<GameContext>(defaultGame);
 
 export const GameContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [names, setNames] = useState<GamePlayerNames>(localStorage.getItem('pNames') ? JSON.parse(localStorage.getItem('pNames')??'{}') : defaultGame.names);
     return (
-        <GContext.Provider value={{ names, setNames, backManager }}>
+        <GContext.Provider value={{ backManager }}>
             {children}
         </GContext.Provider>
     );
@@ -24,5 +18,5 @@ export const GameContextProvider: React.FC<{ children: ReactNode }> = ({ childre
 
 
 export const useGame = () => {
-   return useContext(GContext);
+    return useContext(GContext);
 }
