@@ -37,6 +37,9 @@ jobs:
         run: |
           echo "@devemg:registry=https://npm.pkg.github.com/" >> ~/.npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NAVILIB_PACKAGE_TOKEN }}" >> ~/.npmrc
+      
+      - name: Install xmlstarlet and jq
+        run: sudo apt-get update && sudo apt-get install -y xmlstarlet jq
 
       - name: Install dependencies
         run: npm ci
@@ -50,8 +53,14 @@ jobs:
       - name: Bump version, amend commit message, and push
         run: |
           npm version patch
-          git commit --amend -m "new version $(git log -1 --pretty=%B) [skip ci]"
-          git push --force-with-lease origin HEAD
+          echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+          xmlstarlet ed -N w="http://www.w3.org/ns/widgets" \
+            -u "/w:widget/@version" \
+            -v "$PACKAGE_VERSION" public/config.xml > config-updated.xml
+          mv config-updated.xml public/config.xml
+          git add public/config.xml
+          git diff --cached --quiet || git commit -m "Sync version to $PACKAGE_VERSION [skip ci]"
+          git push
           git push origin --tags
 
       - name: Build
