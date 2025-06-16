@@ -9,12 +9,14 @@ import { GamePlayerType } from "@models/game-player-type";
 import { NamesList } from "@components";
 import { useGameStore, pushPlayerName, updateNames } from "@store/Store";
 import { useTranslation } from "react-i18next";
+import { useEvent } from "@analytics/useEvent";
 
 
 export const PlayerNamesPage = () => {
   const navigate = useNavigate();
   const { p1Name, p2Name, players:playerOptNames } = useGameStore((state) => state);
   const { t } = useTranslation();
+  const { sendPlayGame } = useEvent();
   const [form, setForm] = useState({ p1: p1Name != '' ? p1Name : t('player-1'), p2: p2Name != '' ? p2Name : t('player-2') });
   const buttonsRef = useRef<HTMLDivElement>(null);
   const inputP1Ref = useRef<HTMLInputElement>(null);
@@ -41,9 +43,8 @@ export const PlayerNamesPage = () => {
     if (!playerOptNames.includes(form.p2.toLowerCase())) {
       pushPlayerName(form.p2.toLowerCase());
     }
-    localStorage.setItem('p1Name', form.p1);
-    localStorage.setItem('p2Name', form.p2);
     updateNames(form);
+    sendPlayGame();
     navigate('/game');
   };
 

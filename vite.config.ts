@@ -38,6 +38,7 @@ export default defineConfig(({ mode })=>({
       '@hooks': '/src/hooks',
       '@assets': '/src/assets',
       '@store': '/src/store',
+      '@analytics': '/src/analytics',
     },
   },
 }))

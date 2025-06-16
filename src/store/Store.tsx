@@ -53,7 +53,9 @@ export const pushGame = (game: GameMatch) =>
  * @param name1 
  * @param name2 
  */
-export const updateNames = ({ p1, p2 }: {p1: string, p2: string}) => {
+export const updateNames = ({ p1, p2 }: { p1: string, p2: string }) => {
+  localStorage.setItem('p1Name', p1);
+  localStorage.setItem('p2Name', p2);
   useGameStore.setState(() => ({
     p1Name: p1,
     p2Name: p2

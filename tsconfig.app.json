@@ -33,6 +33,7 @@
       "@hooks/*": ["./hooks/*"],
       "@assets/*": ["./assets/*"],
       "@store/*": ["./store/*"],
+      "@analytics/*": ["./analytics/*"],
     }
   },
   "include": ["src"]

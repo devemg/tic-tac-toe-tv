@@ -15,6 +15,7 @@ import { TopItem } from '@models/top-item';
 import { focusContainerRef } from '@utils/focus.utils';
 import { useTranslation } from 'react-i18next';
 import { formatDistanceToNow, formatDuration, intervalToDuration } from 'date-fns';
+import { useEvent } from '@analytics/useEvent';
 
 export const ScoreBoardPage = () => {
   const gameMatches = useGameStore((state) => state.history);
@@ -23,6 +24,7 @@ export const ScoreBoardPage = () => {
   const navigate = useNavigate();
   const buttonsRef = useRef(null);
   const { t } = useTranslation();
+  const { sendRemoveGameHistory, sendNewGame } = useEvent();
 
 
   useEffect(() => {
@@ -32,6 +34,7 @@ export const ScoreBoardPage = () => {
   const clearHistory = () => {
     clearGames();
     clearFilter();
+    sendRemoveGameHistory();
   }
 
   const updateFilter = (topItem: TopItem) => {
@@ -43,6 +46,11 @@ export const ScoreBoardPage = () => {
     setFilter(undefined);
     setFilteredMatches(gameMatches);
     focusContainerRef(buttonsRef);
+  }
+
+  const goTonewGame = () => {
+    sendNewGame();
+    navigate('/profiles');
   }
 
   return (
@@ -69,7 +77,7 @@ export const ScoreBoardPage = () => {
                     <img className={styles[match.winner ?? '']} src={match.winner === 'p1' ? iconx : icono} alt="medal" />
                     <div>
                       <p>{match.nameP1} vs. {match.nameP2}</p>
-                      <span>{t('sb.ago', {time: formatDistanceToNow(match.startTime, { locale: getDateLocale() }) })}</span>
+                      <span>{t('sb.ago', { time: formatDistanceToNow(match.startTime, { locale: getDateLocale() }) })}</span>
                     </div>
                   </div>
                   <div className={styles['match-right']}>
@@ -88,7 +96,7 @@ export const ScoreBoardPage = () => {
           {gameMatches.length > 0 ? <button navi-element="true" onClick={clearHistory}>
             <img src={deleteIcon} alt="Delete" />
             {t('sb.clear-history')}</button> :
-            <button navi-element="true" onClick={() => navigate('/profiles')}>{t('sb.start-game')}</button>
+            <button navi-element="true" onClick={goTonewGame}>{t('sb.start-game')}</button>
           }
         </div>
       </div>
