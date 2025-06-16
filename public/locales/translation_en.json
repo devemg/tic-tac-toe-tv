@@ -57,7 +57,7 @@
     "sb": {
         "title": "Score Board",
         "empty": "The board is empty, but not for long. Will it be you?",
-        "ago": "ago",
+        "ago": "{{time}} ago",
         "draw-game": "Draw Game",
         "won": "won",
         "duration": "Duration",

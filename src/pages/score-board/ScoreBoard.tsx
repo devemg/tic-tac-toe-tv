@@ -1,5 +1,5 @@
 import styles from './score-board.module.scss';
-import { getTop3 } from '@utils/data.utils';
+import { getDateLocale, getTop3 } from '@utils/data.utils';
 import medal1 from '@assets/medals/mdi_medal_gold.svg';
 import medal2 from '@assets/medals/mdi_medal_silver.svg';
 import medal3 from '@assets/medals/mdi_medal_bronze.svg';
@@ -14,6 +14,7 @@ import { GameMatch } from '@models/GameMatch';
 import { TopItem } from '@models/top-item';
 import { focusContainerRef } from '@utils/focus.utils';
 import { useTranslation } from 'react-i18next';
+import { formatDistanceToNow, formatDuration, intervalToDuration } from 'date-fns';
 
 export const ScoreBoardPage = () => {
   const gameMatches = useGameStore((state) => state.history);
@@ -22,6 +23,7 @@ export const ScoreBoardPage = () => {
   const navigate = useNavigate();
   const buttonsRef = useRef(null);
   const { t } = useTranslation();
+
 
   useEffect(() => {
     focusContainerRef(buttonsRef);
@@ -67,12 +69,15 @@ export const ScoreBoardPage = () => {
                     <img className={styles[match.winner ?? '']} src={match.winner === 'p1' ? iconx : icono} alt="medal" />
                     <div>
                       <p>{match.nameP1} vs. {match.nameP2}</p>
-                      <span>{Date.now() - match.startTime} {t('sb.ago')}</span>
+                      <span>{t('sb.ago', {time: formatDistanceToNow(match.startTime, { locale: getDateLocale() }) })}</span>
                     </div>
                   </div>
                   <div className={styles['match-right']}>
                     <p className={styles[match.winner ?? '']}>{!match.winner ? t('sb.draw-game') : match.winner === 'p1' ? match.nameP1 : match.nameP2} {match.winner && t('sb.won') + '!'}</p>
-                    {match.endTime && <span>{t('sb.duration')}: {match.endTime - match.startTime} s</span>}
+                    {match.endTime && <span>{t('sb.duration')}: {formatDuration(intervalToDuration({ start: match.startTime, end: match.endTime }), {
+                      format: ['hours', 'minutes', 'seconds'],
+                      locale: getDateLocale(),
+                    })}</span>}
                   </div>
                 </div>)
               }

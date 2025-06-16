@@ -1,6 +1,8 @@
 import { GamePlayerType } from "@models/game-player-type";
 import { GameMatch } from "@models/GameMatch";
 import { TopItem } from "@models/top-item";
+import i18next from "i18next";
+import { enUS, es } from 'date-fns/locale';
 
 export const getTop3 = (
     gameData: GameMatch[]
@@ -29,3 +31,15 @@ export const getTop3 = (
         .sort((a, b) => b.wins - a.wins)
         .slice(0, 3);
 };
+
+/**
+ * Get the current locale for date nfs formating
+ * 
+ * @returns datenfs locale
+ */
+export const getDateLocale = () => {
+    if (i18next.language.toLowerCase() === 'es') {
+        return es;
+    }
+    return enUS;
+}

@@ -57,7 +57,7 @@
     "sb": {
         "title": "Marcador",
         "empty": "El tablero está vacío, pero no por mucho. ¿Serás tú?",
-        "ago": "hace",
+        "ago": "hace {{time}}",
         "draw-game": "Empate",
         "won": "ganó",
         "duration": "Duración",
