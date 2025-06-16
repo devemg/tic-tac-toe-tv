@@ -9,6 +9,7 @@ import { focusContainerRef } from "@utils/focus.utils";
 import { Dialog } from "@components";
 import { useGame } from "@context";
 import { closeApp } from "@utils/tizen.utils";
+import { useTranslation } from "react-i18next";
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export const HomePage = () => {
   const [showExitDialog, setshowExitDialog] = useState(false);
   const dialogExitRef = useRef<HTMLDivElement>(null);
   const { backManager } = useGame();
+  const { t } = useTranslation();
 
   useEffect(() => {
     focusContainerRef(boxesRef);
@@ -47,34 +49,34 @@ export const HomePage = () => {
           <img src="/logo.svg" alt="" />
           <h1>Tic Tac Toe</h1>
         </div>
-        <p>Challenge a friend in the classic game of strategy and fun!</p>
+        <p>{t('home.line')}</p>
         <div className={styles['page-boxes']} navi-container="horizontal" navi-default="true" ref={boxesRef}>
           <button onClick={() => navigate('/profiles')} navi-element="true">
             <img src={newgame} alt="Gamepad" />
-            <h3>New Game</h3>
+            <h3>{t('home.new-game')}</h3>
           </button>
           <button onClick={() => navigate('/board')} navi-element="true">
             <img src={board} alt="Winner Podium" />
-            <h3>Scoreboard</h3>
+            <h3>{t('home.scoreboard')}</h3>
           </button>
         </div>
         <div className="page-buttons" navi-container="horizontal">
           <button onClick={() => navigate('/instructions')} navi-element="true">
             <img src={question} alt="Question" />
-            How to play?
+            {t('home.how-to')}
           </button>
           <button onClick={() => navigate('/settings')} navi-element="true">
             <img src={gear} alt="Gear" />
-            Settings
+            {t('home.settings')}
           </button>
         </div>
       </div>
       <Dialog show={showExitDialog} onClose={() => setshowExitDialog(false)} >
         <div className="modal">
-          <p>Sure you want to exit?</p>
+          <p>{t('exit-text')}</p>
           <div className="page-buttons" ref={dialogExitRef} navi-container="horizontal" navi-blocked="true">
-            <button navi-element="true" onClick={() => setshowExitDialog(false)}>No</button>
-            <button navi-element="true" onClick={exitApp}>Yes</button>
+            <button navi-element="true" onClick={() => setshowExitDialog(false)}>{t('no')}</button>
+            <button navi-element="true" onClick={exitApp}>{t('yes')}</button>
           </div>
         </div>
       </Dialog>

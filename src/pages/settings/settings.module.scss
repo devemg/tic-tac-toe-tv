@@ -52,6 +52,17 @@
     flex-direction: column;
     justify-content: center;
 
+    &-lang {
+        min-height: auto;
+    }
+
+    &-title {
+        // language title
+        margin-bottom: 1vw !important;
+        text-transform: capitalize;
+        text-align: center;
+    }
+
     p {
         margin: 0;
     }

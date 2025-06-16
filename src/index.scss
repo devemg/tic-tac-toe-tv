@@ -209,6 +209,7 @@ input {
   p {
     margin: 0;
     font-size: 2rem;
+    text-transform: capitalize;
     @media (min-width: 1900px) {
       font-size: 2.5rem;
     }

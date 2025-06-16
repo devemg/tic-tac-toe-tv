@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from 'react';
 import { GameMatch } from '@models/GameMatch';
 import { TopItem } from '@models/top-item';
 import { focusContainerRef } from '@utils/focus.utils';
+import { useTranslation } from 'react-i18next';
 
 export const ScoreBoardPage = () => {
   const gameMatches = useGameStore((state) => state.history);
@@ -20,9 +21,10 @@ export const ScoreBoardPage = () => {
   const [filteredMatches, setFilteredMatches] = useState<GameMatch[]>([...gameMatches]);
   const navigate = useNavigate();
   const buttonsRef = useRef(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
-      focusContainerRef(buttonsRef);
+    focusContainerRef(buttonsRef);
   }, []);
 
   const clearHistory = () => {
@@ -45,42 +47,43 @@ export const ScoreBoardPage = () => {
     <div className={styles['page']}>
       <h1 className="page-header">
         <img src={backIcon} alt="Left Arrow" onClick={() => navigate('/')} />
-        Score Board  {filter && `- ${filter}`}
+        {t('sb.title')} {filter && `- ${filter}`}
       </h1>
       <div className={styles['page-section']} navi-container="vertical" navi-default="true">
 
-        {gameMatches.length == 0 ? <h2 className={styles['page-empty']}>The board is empty, but not for long. Will it be you?</h2> : <div className={styles['page-row']}>
-          <div className={styles['page-winners']} navi-container="vertical">
-            {
-              getTop3(gameMatches).map((el, index) => <p key={el.name} navi-element="true" tabIndex={0} onClick={() => updateFilter(el)}>
-                <img src={index === 0 ? medal1 : index === 1 ? medal2 : medal3} alt="medal" />
-                {el.name}</p>)
-            }
-          </div>
-          <div className={styles['page-matches']}>
-            {
-              filteredMatches.map((match) => <div key={match.startTime}>
-                <div className={styles['match-left']}>
-                  <img className={styles[match.winner ?? '']} src={match.winner === 'p1' ? iconx : icono} alt="medal" />
-                  <div>
-                    <p>{match.nameP1} vs. {match.nameP2}</p>
-                    <span>{Date.now() - match.startTime} ago</span>
+        {gameMatches.length == 0 ? <h2 className={styles['page-empty']}>{t('sb.empty')}</h2> :
+          <div className={styles['page-row']}>
+            <div className={styles['page-winners']} navi-container="vertical">
+              {
+                getTop3(gameMatches).map((el, index) => <p key={el.name} navi-element="true" tabIndex={0} onClick={() => updateFilter(el)}>
+                  <img src={index === 0 ? medal1 : index === 1 ? medal2 : medal3} alt="medal" />
+                  {el.name}</p>)
+              }
+            </div>
+            <div className={styles['page-matches']}>
+              {
+                filteredMatches.map((match) => <div key={match.startTime}>
+                  <div className={styles['match-left']}>
+                    <img className={styles[match.winner ?? '']} src={match.winner === 'p1' ? iconx : icono} alt="medal" />
+                    <div>
+                      <p>{match.nameP1} vs. {match.nameP2}</p>
+                      <span>{Date.now() - match.startTime} {t('sb.ago')}</span>
+                    </div>
                   </div>
-                </div>
-                <div className={styles['match-right']}>
-                  <p className={styles[match.winner ?? '']}>{!match.winner ? 'Draw Game' : match.winner === 'p1' ? match.nameP1 : match.nameP2} {match.winner && 'won!'}</p>
-                  {match.endTime && <span>Duration: {match.endTime - match.startTime} s</span>}
-                </div>
-              </div>)
-            }
-          </div>
-        </div>}
+                  <div className={styles['match-right']}>
+                    <p className={styles[match.winner ?? '']}>{!match.winner ? t('sb.draw-game') : match.winner === 'p1' ? match.nameP1 : match.nameP2} {match.winner && t('sb.won') + '!'}</p>
+                    {match.endTime && <span>{t('sb.duration')}: {match.endTime - match.startTime} s</span>}
+                  </div>
+                </div>)
+              }
+            </div>
+          </div>}
         <div className="page-buttons" navi-container="horizontal" ref={buttonsRef}>
           {filter && <button navi-element="true" onClick={clearFilter}>Clear Filter</button>}
           {gameMatches.length > 0 ? <button navi-element="true" onClick={clearHistory}>
             <img src={deleteIcon} alt="Delete" />
-            Clear History</button> :
-            <button navi-element="true" onClick={() => navigate('/profiles')}>Start Game</button>
+            {t('sb.clear-history')}</button> :
+            <button navi-element="true" onClick={() => navigate('/profiles')}>{t('sb.start-game')}</button>
           }
         </div>
       </div>

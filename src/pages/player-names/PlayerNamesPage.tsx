@@ -9,6 +9,7 @@ import backIcon from '@assets/arrow-left.svg';
 import { GamePlayerType } from "@models/game-player-type";
 import { NamesList } from "@components";
 import { useGameStore, pushPlayerName } from "@store/Store";
+import { useTranslation } from "react-i18next";
 
 
 export const PlayerNamesPage = () => {
@@ -19,6 +20,7 @@ export const PlayerNamesPage = () => {
   const buttonsRef = useRef<HTMLDivElement>(null);
   const inputP1Ref = useRef<HTMLInputElement>(null);
   const inputP2Ref = useRef<HTMLInputElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     focusContainerRef(buttonsRef);
@@ -58,7 +60,7 @@ export const PlayerNamesPage = () => {
 
   const manageFormKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === 'Select') {
-    const target = event.target as HTMLElement;
+      const target = event.target as HTMLElement;
       if (target.tagName === 'INPUT') {
         event.preventDefault();
       }
@@ -69,26 +71,27 @@ export const PlayerNamesPage = () => {
     <div className={styles['page']}>
       <h1 className="page-header">
         <img src={backIcon} alt="Left Arrow" onClick={() => navigate('/')} />
-        New Game
+        {t('names.title')}
       </h1>
       <form navi-container="vertical" onSubmit={handleSubmit} onKeyDown={manageFormKeyDown}>
-        <h2>Select the game players</h2>
+        <h2>{t('names.selection')}</h2>
         <div className={styles['page-boxes']} navi-container="horizontal">
           <div className={styles['page-boxes-names']} navi-container="vertical">
             <img src={icono} alt="Player 1 Icon" />
             <NamesList names={playerOptNames.filter(name => name !== form.p1.toLowerCase() && name !== form.p2.toLowerCase())} player="p1" onElementClick={updateName} />
-            <input type="text" name="p1" placeholder="Player 1" navi-element="true" ref={inputP1Ref}
+            <input type="text" name="p1" placeholder={t('player-1')} navi-element="true" ref={inputP1Ref}
               onChange={handleChange} value={form.p1} />
           </div>
           <div className={styles['page-boxes-names']} navi-container="vertical">
             <img src={iconx} alt="Player 2 Icon" />
             <NamesList names={playerOptNames.filter(name => name !== form.p1.toLowerCase() && name !== form.p2.toLowerCase())} player="p2" onElementClick={updateName} />
-            <input type="text" name="p2" placeholder="Player 2" navi-element="true" ref={inputP2Ref}
+            <input type="text" name="p2" placeholder={t('player-2')} navi-element="true" ref={inputP2Ref}
               onChange={handleChange} value={form.p2} />
           </div>
         </div>
         <div className="page-buttons" ref={buttonsRef} navi-container="horizontal" navi-default="true">
-          <button type="submit" className="single" navi-element="true" disabled={form.p1.length === 0 || form.p2.length === 0 || form.p1.toLowerCase() === form.p2.toLowerCase()}>Play</button>
+          <button type="submit" className="single" navi-element="true" disabled={form.p1.length === 0 || form.p2.length === 0 || form.p1.toLowerCase() === form.p2.toLowerCase()}
+          >{t('names.play')}</button>
         </div>
       </form>
     </div>
