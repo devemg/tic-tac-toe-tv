@@ -3,7 +3,6 @@ import { manageMovement, NaviKeyboardEvent } from "@devemg/navi-lib";
 import { useEffect } from 'react';
 import { GameContextProvider, useGame } from '@context';
 
-
 export const App = () => {
     const navigate = useNavigate();
     const { backManager } = useGame();

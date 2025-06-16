@@ -11,6 +11,7 @@ import backIcon from '@assets/arrow-left.svg';
 import clsx from 'clsx';
 import { pushGame } from "@store/Store";
 import { GameMatch } from "@models/GameMatch";
+import { useTranslation } from "react-i18next";
 
 export const GamePage = () => {
     const [activePlayer, setActivePlayer] = useState<GamePlayerType>('p1');
@@ -22,6 +23,7 @@ export const GamePage = () => {
     const dialogRef = useRef<HTMLDivElement>(null);
     const dialogExitRef = useRef<HTMLDivElement>(null);
     const [startTime, setStartTime] = useState(Date.now());
+    const { t } = useTranslation();
 
     const toglePlayer = () => {
         setActivePlayer(prevPlayer => prevPlayer === 'p1' ? 'p2' : 'p1');
@@ -105,22 +107,22 @@ export const GamePage = () => {
             <Dialog show={!!winner || winner === null} onClose={() => { }} >
                 <div className="modal">
                     {winner !== null ? <>
-                        <h1>Congratulations!! </h1>
-                        <p>Winner: {activePlayer === 'p1' ? 'Player 1' : 'Player 2'}</p>
+                        <h1>{t('game.congrats')}</h1>
+                        <p>{t('game.winner')}: {activePlayer === 'p1' ? names.p1 : names.p2}</p>
                     </>
-                        : <p>Another game?</p>}
+                        : <p>{t('game.play-again-text')}</p>}
                     <div className="page-buttons" ref={dialogRef} navi-container="horizontal" navi-blocked="true">
-                        <button navi-element="true" onClick={() => navigate('/profiles', { replace: true })}>Go Back</button>
-                        <button navi-element="true" onClick={playAgain}>Play Again</button>
+                        <button navi-element="true" onClick={() => navigate('/profiles', { replace: true })}>{t('game.go-back')}</button>
+                        <button navi-element="true" onClick={playAgain}>{t('game.play-again')}</button>
                     </div>
                 </div>
             </Dialog>
             <Dialog show={showExitDialog} onClose={() => setshowExitDialog(false)} >
                 <div className="modal">
-                    <p>sure you want to exit?</p>
+                    <p>{t('exit-text')}</p>
                     <div className="page-buttons" ref={dialogExitRef} navi-container="horizontal" navi-blocked="true">
-                        <button navi-element="true" onClick={() => setshowExitDialog(false)}>No</button>
-                        <button navi-element="true" onClick={() => navigate('/profiles', { replace: true })}>Yes</button>
+                        <button navi-element="true" onClick={() => setshowExitDialog(false)}>{t('no')}</button>
+                        <button navi-element="true" onClick={() => navigate('/profiles', { replace: true })}>{t('yes')}</button>
                     </div>
                 </div>
             </Dialog>
