@@ -41,6 +41,8 @@ export const PlayerNamesPage = () => {
     if (!playerOptNames.includes(form.p2.toLowerCase())) {
       pushPlayerName(form.p2.toLowerCase());
     }
+    localStorage.setItem('p1Name', form.p1);
+    localStorage.setItem('p2Name', form.p2);
     updateNames(form);
     navigate('/game');
   };

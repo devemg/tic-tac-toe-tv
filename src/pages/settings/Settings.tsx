@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router';
 import styles from './settings.module.scss';
 import backIcon from '@assets/arrow-left.svg';
 import infoIcon from '@assets/info.svg';
+import checkIcon from '@assets/check.svg';
 import { useEffect, useRef, useState } from 'react';
 import { focusContainerRef } from '@utils/focus.utils';
 import { clearGames, clearNames } from '@store/Store';
@@ -105,7 +106,7 @@ export const SettingsPage = () => {
           <div className={clsx(styles['page-section'], styles['page-section-lang'])} ref={dialogRef} navi-container="vertical" navi-blocked="true">
             <h2 className={styles['page-section-title']}>{t('settings.select-lang')}</h2>
             {languageOptions.map(lang => <button key={lang.code} navi-element="true" onClick={() => selectLanguage(lang)}
-              className={styles['page-section-item']}>{lang.language}</button>)}
+              className={clsx(styles['page-section-item'], styles['language-row'])}>{lang.language} {lang.code === i18next.language ? <img src={checkIcon} alt="Check" />: null}</button>)}
           </div>
         </div>
       </Dialog>
