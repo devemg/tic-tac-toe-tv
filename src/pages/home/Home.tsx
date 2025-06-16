@@ -4,6 +4,7 @@ import newgame from '@assets/gamepad.svg';
 import board from '@assets/podium-winner.svg';
 import question from '@assets/info.svg';
 import gear from '@assets/gear.svg';
+import logo from '@assets/logo.svg';
 import { useEffect, useRef, useState } from "react";
 import { focusContainerRef } from "@utils/focus.utils";
 import { Dialog } from "@components";
@@ -62,7 +63,7 @@ export const HomePage = () => {
     <>
       <div className={styles['page']} navi-container="vertical">
         <div className={styles['page-logo']}>
-          <img src="/logo.svg" alt="" />
+          <img src={logo} alt="ox" />
           <h1>Tic Tac Toe</h1>
         </div>
         <p>{t('home.line')}</p>
