@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import legacy from '@vitejs/plugin-legacy'
+import pkg from './package.json'
 
 export default defineConfig(({ mode })=>({
   base: mode === 'web-prod' ? '/tic-tac-toe-tv/' : '',
+  define: {
+    APP_VERSION: JSON.stringify(pkg.version),
+  },
   plugins: [
     react({
       babel: {
