@@ -50,18 +50,19 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
-      - name: Bump version, amend commit message, and push
+      - name: Bump version, update XML, and push
         run: |
-          npm version patch
-          echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+          NEW_VERSION=$(npm version patch --no-git-tag-version)
+          echo "PACKAGE_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           xmlstarlet ed -N w="http://www.w3.org/ns/widgets" \
             -u "/w:widget/@version" \
-            -v "$PACKAGE_VERSION" public/config.xml > config-updated.xml
+            -v "$NEW_VERSION" public/config.xml > config-updated.xml
           mv config-updated.xml public/config.xml
-          git add public/config.xml
-          git diff --cached --quiet || git commit -m "Sync version to $PACKAGE_VERSION [skip ci]"
+          git add package.json package-lock.json public/config.xml
+          git commit -m "Bump version to $NEW_VERSION [skip ci]"
+          git tag "$NEW_VERSION"
           git push
-          git push origin --tags
+          git push origin "$NEW_VERSION"
 
       - name: Build
         run: npm run build:web
