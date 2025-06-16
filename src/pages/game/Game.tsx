@@ -83,7 +83,7 @@ export const GamePage = () => {
                         'page-header',
                         styles['page-header']
                     )}>
-                <img src={backIcon} alt="Left Arrow" onClick={() => navigate('/')} />
+                <img src={backIcon} alt="Left Arrow" onClick={() => navigate('/profiles')} />
                 <div className={styles['players']}>
                     <div className={clsx(
                         styles[activePlayer],
