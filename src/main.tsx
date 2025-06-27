@@ -5,15 +5,8 @@ import './localization'
 import { HashRouter, Route, Routes } from 'react-router'
 import { App } from './App'
 import { GamePage, HomePage, InstructionsPage, ScoreBoardPage, PlayerNamesPage, SettingsPage } from '@pages';
-import ReactGA from 'react-ga4';
-import { getDeviceId } from '@utils/data.utils'
 
 try {
-  const TRACKING_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
-  console.log('Running in:', import.meta.env.MODE);
-  console.log('GA ID:', TRACKING_ID);
-  ReactGA.initialize(TRACKING_ID);
-  ReactGA.set({ userId: getDeviceId() });
 } catch (e) {
   console.error('[ERROR] on analytics init', e);
 }
